@@ -5,6 +5,7 @@ Groups :
         - nika mohseni
         - adrina ghavami
         - mahsa aria
+        - nima sanaati
         
 
     - B : (Lesson -> id, title, day, start_date, start_time, end_time)
