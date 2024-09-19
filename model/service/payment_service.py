@@ -1,6 +1,5 @@
 # service/payment_service.py - Creator: power0matin
 
-
 class PaymentService:
     def __init__(self):
         self.payment_repository = PaymentRepository()
