@@ -18,7 +18,15 @@ class PaymentService:
         return saved_payment
 
     def get_payment(self, payment_id):
-        pass
+        payment = self.payment.retrieve_by_id(payment_id)
+        if payment:
+            return payment
+        else:
+            return "Payment not found"
 
     def get_all_payments(self):
-        pass
+        payments = self.payment_repository.get_all()
+        if payments:
+            return payments
+        else:
+            return "Payments not found"
