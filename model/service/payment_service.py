@@ -1,7 +1,4 @@
 # service/payment_service.py - Creator: power0matin
-from repository.payment_repository import PaymentRepository
-from entity.payment import Payment
-
 
 class PaymentService:
     def __init__(self):
