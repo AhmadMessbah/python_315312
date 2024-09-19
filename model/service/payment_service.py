@@ -22,7 +22,7 @@ class PaymentService:
         if payment:
             return payment
         else:
-            return "Payment not found"
+            return f"Payment with ID {payment_id} not found"
 
     def get_all_payments(self):
         payments = self.payment_repository.get_all()
