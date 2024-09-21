@@ -13,6 +13,7 @@ class PaymentRepository:
         )
         self.cursor = self.connection.cursor()
 
+
 def disconnect(self):
     self.cursor.close()
     self.connection.close()
