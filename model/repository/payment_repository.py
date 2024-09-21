@@ -12,8 +12,8 @@ class PaymentRepository:
             database="payment_db"
         )
         self.cursor = self.connection.cursor()
+    
+    def disconnect(self):
+        self.cursor.close()
+        self.connection.close()
 
-
-def disconnect(self):
-    self.cursor.close()
-    self.connection.close()
