@@ -9,7 +9,7 @@ class PaymentRepository:
             host="localhost",
             user="root",
             password="root123",
-            database="office_db"
+            database="payment_db"
         )
         self.cursor = self.connection.cursor()
 
