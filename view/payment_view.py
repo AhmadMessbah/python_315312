@@ -23,7 +23,7 @@ class PaymentView:
             self.table.insert('', 'end', values=(id_value, account_value, amount_value, person_value, date_value))
             self.reset_form()
 
-    def table_focuse(self, event):
+    def table_focus(self, event):
         selected = self.table.focus()
         values = self.table.item(selected, 'values')
         if values:
