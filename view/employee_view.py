@@ -7,7 +7,7 @@ from controller.employee_controller import EmployeeController
 
 class EmployeeView:
     def clear_table(self):
-        for item in self.table.get_children():
+        for item in self.table.get_id():
             self.table.delete(item)
 
     def show_on_table(self):
