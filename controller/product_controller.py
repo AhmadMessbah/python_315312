@@ -1,6 +1,7 @@
 import re
 
 from model.service.product_service import ProductService
+from model.entity.product import Product
 
 
 class ProductController:

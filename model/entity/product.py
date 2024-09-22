@@ -1,4 +1,4 @@
-class product:
+class Product:
     def __init__(self, id, name, brand, model,barcod,buy_price,sell_price):
         self.id = id
         self.name = name
