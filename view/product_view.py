@@ -2,7 +2,7 @@ from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.messagebox as msg
 
-# from controller.product_controller import productController
+from controller.product_controller import ProductController
 
 class ProductView:
     def clear_table(self):
@@ -78,7 +78,7 @@ class ProductView:
                 msg.showerror("Remove Error", message)
 
     def __init__(self):
-        self.controller = productController()
+        self.controller = ProductController()
 
         win = Tk()
         win.geometry("600x300")
