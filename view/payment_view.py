@@ -1,5 +1,4 @@
-import tkinter
-import tkinter.constants
+from tkinter import *
 import tkinter.ttk as ttk
 
 
@@ -20,7 +19,7 @@ class PaymentView:
         person_value = self.person.get()
 
         if id_value and account_value:
-            self.table.insert('', 'end', values=(id_value, account_value, amount_value, person_value, date_value))
+            self.table.insert('', END, values=(id_value, account_value, amount_value, person_value, date_value))
             self.reset_form()
 
     def table_focus(self, event):
@@ -56,26 +55,26 @@ class PaymentView:
 
     def __init__(self):
 
-        win = tkinter.Tk()
+        win = Tk()
         win.geometry("550x300")
 
-        tkinter.Label(win, text="account").place(x=20, y=20)
-        tkinter.Label(win, text="amount").place(x=20, y=60)
-        tkinter.Label(win, text="id").place(x=20, y=100)
-        tkinter.Label(win, text="date").place(x=20, y=140)
-        tkinter.Label(win, text="person").place(x=20, y=180)
+        Label(win, text="account").place(x=20, y=20)
+        Label(win, text="amount").place(x=20, y=60)
+        Label(win, text="id").place(x=20, y=100)
+        Label(win, text="date").place(x=20, y=140)
+        Label(win, text="person").place(x=20, y=180)
 
-        self.account = tkinter.StringVar()
-        self.amount = tkinter.IntVar()
-        self.id = tkinter.IntVar()
-        self.date = tkinter.StringVar()
-        self.person = tkinter.StringVar()
+        self.account = StringVar()
+        self.amount = IntVar()
+        self.id = IntVar()
+        self.date = StringVar()
+        self.person = StringVar()
 
-        tkinter.Entry(win, textvariable=self.account).place(x=80, y=20)
-        tkinter.Entry(win, textvariable=self.amount).place(x=80, y=60)
-        tkinter.Entry(win, textvariable=self.id).place(x=80, y=100)
-        tkinter.Entry(win, textvariable=self.date).place(x=80, y=140)
-        tkinter.Entry(win, textvariable=self.person).place(x=80, y=180)
+        Entry(win, textvariable=self.account).place(x=80, y=20)
+        Entry(win, textvariable=self.amount).place(x=80, y=60)
+        Entry(win, textvariable=self.id).place(x=80, y=100)
+        Entry(win, textvariable=self.date).place(x=80, y=140)
+        Entry(win, textvariable=self.person).place(x=80, y=180)
 
         self.table = ttk.Treeview(win, columns=(1, 2, 3, 4, 5), show="headings")
         self.table.place(x=250, y=20)
@@ -92,11 +91,11 @@ class PaymentView:
         self.table.column(4, width=60)
         self.table.column(5, width=60)
 
-        self.table.bind("<ButtonRelease-1>", self.table_focuse)
+        self.table.bind("<ButtonRelease-1>", self.table_focus)
 
-        tkinter.Button(win, text="Save", command=self.save_record).place(x=100, y=180)
-        tkinter.Button(win, text="Remove", command=self.remove_record).place(x=100, y=210)
-        tkinter.Button(win, text="Edit", command=self.edit_record).place(x=100, y=240)
+        Button(win, text="Save", command=self.save_record).place(x=100, y=180)
+        Button(win, text="Remove", command=self.remove_record).place(x=100, y=210)
+        Button(win, text="Edit", command=self.edit_record).place(x=100, y=240)
 
         self.reset_form()
 

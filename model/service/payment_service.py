@@ -2,6 +2,7 @@
 from model.repository.payment_repository import PaymentRepository
 from model.entity.payment import Payment
 
+# todo : Group D : edit ...  and test
 class PaymentService:
     def __init__(self):
         self.payment_repository = PaymentRepository()

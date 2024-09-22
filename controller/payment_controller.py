@@ -8,6 +8,7 @@ class PaymentController:
         self.service = PaymentService()
 
     def process_payment(self, payment_id, amount, date_time, person):
+        # payment entity setter
         if re.match(r"^[a-zA-Z\s]{2,20}$", person):
             pay = Payment(None, amount, date_time, person)
             error = self.service.process_payment(pay)

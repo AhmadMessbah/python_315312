@@ -1,9 +1,10 @@
-create database payment_db;
+create database mft;
 
-create table payment_db.payment_tbl
+create table mft.payment_tbl
 (
     id int primary key auto_increment,
+    account_id int,
     amount int,
-    date varchar(20),
+    date_time datetime,
     person varchar(20)
 );

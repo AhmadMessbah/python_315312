@@ -22,7 +22,7 @@ Groups :
         - mobina vaziri
         - mehrbod mehrabani
 
-    - D (Online) (Payment -> id,account, amount, date_time, person ) :
+    - D (Online) (Payment -> id, account, amount, date_time, person ) :
         - ayda shams
         - amir shayan emami poor
         - bardia zaghari

@@ -1,19 +1,19 @@
 from datetime import datetime
 
+
 class Payment:
-    def __init__(self, payment_id, amount, date_time, person):
-        self.payment_id = payment_id
+    # todo D Group: id, account, amount, date_time, person
+    def __init__(self, id, account_id, amount, person):
+        self.id = id
+        self.account_id = account_id
         self.amount = amount
-        self.date_time = date_time if isinstance(date_time, datetime) else datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
+        self.date_time = None
         self.person = person
 
-    def __str__(self):
-        return f"Payment(ID: {self.payment_id}, Amount: {self.amount}, Date: {self.date_time}, Person: {self.person})"
+    def __repr__(self):
+        return f"{self.__dict__}"
 
-    def to_dict(self):
-        return {
-            "payment_id": self.payment_id,
-            "amount": self.amount,
-            "date_time": self.date_time.strftime("%Y-%m-%d %H:%M:%S"),
-            "person": self.person
-        }
+    def to_tuple(self):
+        return tuple(self.__dict__.values())
+
+    # if isinstance(date_time, datetime) else datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
