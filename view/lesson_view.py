@@ -22,6 +22,12 @@ class LessonView:
     def __init__(self):
         self.win = Tk()
         self.win.geometry('500x500')
+        self.win.title("Lesson")
+        btn = tkinter.Button(win, text="save" , bg="blue", fg="red", font=("B titr",14))
+        btn.place(x=90,y=100)
+
+
+
 
 
 
