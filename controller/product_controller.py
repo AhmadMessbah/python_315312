@@ -1,5 +1,7 @@
 import re
 
+from model.service.product_service import ProductService
+
 
 class ProductController:
     def __init__(self):
