@@ -9,15 +9,13 @@ class PaymentController:
 
     def process_payment(self, payment_id, amount, date_time, person):
         # payment entity setter
-        if re.match(r"^[a-zA-Z\s]{2,20}$", person):
-            pay = Payment(None, amount, date_time, person)
-            error = self.service.process_payment(pay)
-            if not error:
-                return True, "Info: Payment Saved!"
-            else:
-                return False, error
+        pay = Payment(None, amount, date_time, person)
+        error = self.service.process_payment(pay)
+        if not error:
+            return True, "Info: Payment Saved!"
         else:
-            return False, "Error: Invalid Data!"
+            return False, error
+
 
     def get_payment(self, payment_id):
         payment = self.service.get_payment(payment_id)
