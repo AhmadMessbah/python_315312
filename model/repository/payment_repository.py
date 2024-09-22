@@ -55,5 +55,3 @@ class PaymentRepository:
         self.disconnect()
         if emp:
             return Payment(*emp)
-
-# tst
