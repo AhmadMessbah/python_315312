@@ -1,6 +1,9 @@
+import tkinter
 from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.messagebox as msg
+
+
 
 class LessonView:
     def table_select(self):
@@ -23,7 +26,7 @@ class LessonView:
         self.win = Tk()
         self.win.geometry('500x500')
         self.win.title("Lesson")
-        btn = tkinter.Button(win, text="save" , bg="blue", fg="red", font=("B titr",14))
+        btn = tkinter.Button(self.win, text="save", bg="blue", fg="red", font=("B titr", 14))
         btn.place(x=90,y=100)
 
 
