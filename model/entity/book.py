@@ -1,6 +1,6 @@
 import re
 
-from validation import *
+from book_validation import *
 
 
 # model.entity
@@ -15,8 +15,8 @@ class Book:
         self.author = author
         self.pages = pages
 
-    def __repr__(self):
-        return f"{self.__dict__}"
+        def __repr__(self):
+            return f"{self.__dict__}"
 
     def to_tuple(self):
         return tuple(self.__dict__.values())
@@ -44,6 +44,3 @@ class Book:
     pages = property(get_pages, set_pages)
 
 
-book = Book("Python Book", "python", 100)
-print(book)
-print(book.to_tuple())
