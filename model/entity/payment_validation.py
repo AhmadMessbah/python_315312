@@ -6,8 +6,8 @@ def person_validator(person):
     else:
         return False, "Error: Invalid Data For Person!"
 
-def account_int(account):
-    if type(account) == int and re.match(r"^[0-9]+$", account):
-        return account
+def account_int(account_id):
+    if type(account_id) == int and re.match(r"^[0-9]+$", account_id):
+        return account_id
     else:
         return False, "Error: Invalid Data For Account!"
