@@ -84,7 +84,7 @@ class PaymentView:
         self.table.heading(2, text="account")
         self.table.heading(3, text="amount")
         self.table.heading(4, text="person")
-        self.table.heading(4, text="dete")
+        self.table.heading(5, text="dete")
 
         self.table.column(1, width=60)
         self.table.column(2, width=100)
