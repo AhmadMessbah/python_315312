@@ -1,3 +1,5 @@
+from user_validation import *
+
 class User:
     def __init__(self, id,name,family,birth_date,username,password,is_active):
         self.id = id
@@ -9,11 +11,6 @@ class User:
         self.is_active = is_active
 
     def __repr__(self):
-
-
-
-
-       def __repr__(self):
         return f"{self.__dict__}"
 
     def to_tuple(self):
@@ -24,3 +21,12 @@ class User:
 
     def set_title(self, id):
         self._id = id_validator(id)
+
+    def get_name(self  ):
+
+
+
+
+
+
+    id = property(get_id, set_title)
