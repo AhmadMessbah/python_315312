@@ -2,9 +2,9 @@ from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.messagebox as msg
 
-from controller.product_controller import productController
+# from controller.product_controller import productController
 
-class productView:
+class ProductView:
     def clear_table(self):
         for item in self.table.get_children():
             self.table.delete(item)
@@ -27,7 +27,7 @@ class productView:
     def table_click(self, event):
         item_id = self.table.focus()
         item = self.table.item(item_id)
-        emp = item["values"]
+        pro = item["values"]
         self.id.set(pro[0])
         self.name.set(pro[1])
         self.brand.set(pro[2])
@@ -38,13 +38,13 @@ class productView:
 
     def save_click(self):
         status, message = self.controller.save(
-            self.id.get(pro[0]),
-            self.name.get(pro[1]),
-            self.brand.get(pro[2]),
-            self.model.get(pro[3]),
-            self.barcode.get(pro[2]),
-            self.sell_price.get(pro[2]),
-            self.buy_price.get(pro[2]),
+            self.id.get(),
+            self.name.get(),
+            self.brand.get(),
+            self.model.get(),
+            self.barcode.get(),
+            self.sell_price.get(),
+            self.buy_price.get(),
         )
         if status:
             msg.showinfo("Save", message)
@@ -54,7 +54,7 @@ class productView:
 
     def edit_click(self):
         status, message = self.controller.edit(
-            self.id.get(pro[0]),
+            self.id.get(),
             self.name.get(pro[1]),
             self.brand.get(pro[2]),
             self.model.get(pro[3]),
@@ -140,3 +140,6 @@ class productView:
         self.reset_form()
 
         win.mainloop()
+
+
+ui = ProductView()
