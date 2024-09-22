@@ -24,18 +24,18 @@ class User:
 
     def get_name(self):
         return self._name
-
+            
     def set_name(self, name):
         self._name = name_validator(name)
 
     def get_family(self):
         return self._family
-
+    
     def set_family(self, family):
         self._family = family_validator(family)
 
 
 
-    id = property(get_id, set_title)
+    id = property(get_id, set_id)
     name= property(get_name, set_name)
-    family = property(get_family, set_title)
+    family = property(get_family, set_family)
