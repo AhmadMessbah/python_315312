@@ -10,9 +10,10 @@ controller = PaymentController()
 def test_process_payment():
 
     payment_id = None
+    account = "1234"
     amount = 1000
-    date_time = datetime.now()
     person = "Reza Rezaee"
+    date_time = datetime.now()
 
 
     success, message = controller.process_payment(payment_id, amount, date_time, person)
