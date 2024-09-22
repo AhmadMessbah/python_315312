@@ -21,6 +21,7 @@ class LessonView:
 
     def __init__(self):
         self.win = Tk()
+        self.win.geometry('500x500')
 
 
 
