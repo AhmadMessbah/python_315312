@@ -1,7 +1,5 @@
 from datetime import datetime
-
 import mysql.connector
-
 from model.entity.payment import Payment
 
 
@@ -14,7 +12,7 @@ class PaymentRepository:
             database="mft_db"
         )
         self.cursor = self.connection.cursor()
-    
+
     def disconnect(self):
         self.cursor.close()
         self.connection.close()
@@ -39,7 +37,6 @@ class PaymentRepository:
         self.connection.commit()
         self.disconnect()
 
-
     def find_all(self, id):
         self.connect()
         self.cursor.execute("select * from payment_tbl")
@@ -51,7 +48,7 @@ class PaymentRepository:
     def find_by_id(self, id):
         self.connect()
         self.cursor.execute("select * from payment_tbl where id=%s", [id])
-        emp = self.cursor.fetchone()
+        pay = self.cursor.fetchone()
         self.disconnect()
-        if emp:
-            return Payment(*emp)
+        if pay:
+            return Payment(*pay)
