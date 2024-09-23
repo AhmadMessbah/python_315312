@@ -21,5 +21,5 @@ def username_validator(username):
         return username
 
 def password_validator(password):
-    if re.match("^[0-9a-zA-Z\s]{2,20}$", password):
+    if re.match("^[0-9a-zA-Z\s]{8,20}$", password):
         return password
