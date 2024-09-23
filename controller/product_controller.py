@@ -29,7 +29,7 @@ class ProductController:
     def remove(self,id):
         error = self.service.remove(id)
         if not error:
-            return True, "Product Removed"
+            return True, 'Product Removed'
         else:
             return False, error
 
