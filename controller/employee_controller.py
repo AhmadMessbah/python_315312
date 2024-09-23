@@ -16,7 +16,7 @@ class EmployeeController:
             emp = Employee(None, name, family, age)
             error = self.service.save(emp)
             if not error:
-                return True, "Info : Employee Saveed"
+                return True, "Info : Employee Saved"
             else:
                 return False, error
         else:
