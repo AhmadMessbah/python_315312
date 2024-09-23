@@ -16,13 +16,27 @@ class PaymentController:
         else:
             return False, error
 
+    def edit_payment(self, id, account_id, amount, person):
+        pay = Payment(id, account_id, amount, person)
+        error = self.service.edit_payment(pay)
+        if not error:
+            return True, "Payment Has Been Edited!"
+        else:
+            return False, error
 
-    def get_payment(self, id):
-        payment = self.service.get_payment(id)
+    def remove_payment(self, id):
+        error = self.service.remove_payment(id)
+        if not error:
+            return True, "Payment Has Been Removed!"
+        else:
+            return False, error
+
+    def find_payment_by_id(self, id):
+        payment = self.service.find_payment_by_id(id)
         if payment:
             return "Payment Found!", payment
         else:
-            return f"Payment with ID {id} not found!"
+            return f"Payment With ID {id} Not Found!"
 
     def get_all_payments(self):
         return self.service.get_all_payments()
