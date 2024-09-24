@@ -1,7 +1,7 @@
-from numpy.ma.extras import apply_along_axis
 
 
-class product:
+
+class Product:
     def __init__(self, id, name, brand, model, barcod, buy_price, sell_price):
         self.id = id
         self.name = name
@@ -14,13 +14,14 @@ class product:
     def __repr__(self):
         return f"{self.__dict__}"
 
-id = 1
-name = "aaa"
-brand = "bbb"
-model = "ccc"
-barcod = 1234567890
-buy_price = 10
-sell_price = 20
-
-print(tuple(product))
+xpro = Product(
+    id = 1,
+    name = "aaa",
+    brand = "bbb",
+    model = "ccc",
+    barcod = 1234567890,
+    buy_price = 10,
+    sell_price = 20
+    )
+print(xpro)
 
