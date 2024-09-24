@@ -37,4 +37,26 @@ class Payment:
     account_id = property(get_account_id, set_account_id)
     amount = property(get_amount, set_amount)
     person = property(get_person, set_person)
-    # if isinstance(date_time, datetime) else datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
+
+# if isinstance(date_time, datetime) else datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
+
+
+#def person_validator(person):
+ #   if isinstance(person, str) and re.match(r"^[a-zA-Z0-9\s]{2,20}$", person):
+  #      return person
+   # else:
+    #    raise ValueError("Error: Invalid Data For Person!")
+
+
+#def account_int(account_id):
+ #   if isinstance(account_id, int) and 2 <= len(str(account_id)) <= 16:
+ #       return account_id
+ #   else:
+ #       raise ValueError("Error: Invalid Data For Account!")
+
+
+#def amount_int(amount):
+ #   if isinstance(amount, int) and amount >= 0:
+ #       return amount
+ #   else:
+ #      raise ValueError("Error: Invalid Data For Amount!")
