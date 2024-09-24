@@ -9,8 +9,7 @@ class Lesson:
 
         def set_id(self, id):
             print("SET")
-            if type(id) == int and re.match(r"^[1-9]{10}$", id):
-                self.__id = id
+            self.__id = i
 
 
         # self.title = title
