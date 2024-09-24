@@ -1,5 +1,5 @@
 # python cant find it(error > no module named product validator)
-from product_validation import *
+from model.entity.product_validation import *
 
 class Product:
     def __init__(self, id, name, brand, model,barcode,buy_price,sell_price):
