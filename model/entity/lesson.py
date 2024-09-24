@@ -9,7 +9,7 @@ class Lesson:
 
         def set_id(self, id):
             print("SET")
-            self.__id = i
+            self.__id = id
 
 
         # self.title = title
