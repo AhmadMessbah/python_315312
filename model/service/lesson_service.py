@@ -2,7 +2,7 @@ from model.entity.lesson import Lesson
 from model.repository.lesson_repository import LessonRepository
 
 
-class LessonService
+class LessonService:
     def __init__(self):
         self.repo = LessonRepository()
 
