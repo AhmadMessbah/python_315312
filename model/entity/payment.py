@@ -1,14 +1,14 @@
 from datetime import datetime
-
-
+import re
+from payment_validation import person_validator, account_int, amount_int
 class Payment:
     # todo D Group: id, account, amount, date_time, person
     def __init__(self, id, account_id, amount, person):
         self.id = id
-        self.account_id = account_int(account_id)
-        self.amount = amount_int(amount)
+        self.account_id = account_id
+        self.amount = amount
         self.date_time = datetime.now()
-        self.person = person_validator(person)
+        self.person = person
 
     def __repr__(self):
         return f"{self.__dict__}"
@@ -40,23 +40,3 @@ class Payment:
 
 # if isinstance(date_time, datetime) else datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
 
-
-#def person_validator(person):
- #   if isinstance(person, str) and re.match(r"^[a-zA-Z0-9\s]{2,20}$", person):
-  #      return person
-   # else:
-    #    raise ValueError("Error: Invalid Data For Person!")
-
-
-#def account_int(account_id):
- #   if isinstance(account_id, int) and 2 <= len(str(account_id)) <= 16:
- #       return account_id
- #   else:
- #       raise ValueError("Error: Invalid Data For Account!")
-
-
-#def amount_int(amount):
- #   if isinstance(amount, int) and amount >= 0:
- #       return amount
- #   else:
- #      raise ValueError("Error: Invalid Data For Amount!")
