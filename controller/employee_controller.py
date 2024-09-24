@@ -22,8 +22,7 @@ class EmployeeController:
         else:
             return False, "Error : Invalid Data"
 
-
-    def edit(self,id, name, family, age):
+    def edit(self, id, name, family, age):
         if re.match(r"^[a-zA-z\s]{2,20}$", name) and re.match(r"^[a-zA-z\s]{2,20}$", family):
             emp = Employee(id, name, family, age)
             error = self.service.edit(emp)
@@ -34,8 +33,7 @@ class EmployeeController:
         else:
             return False, "Invalid Data"
 
-
-    def remove(self,id):
+    def remove(self, id):
         error = self.service.remove(id)
         if not error:
             return True, "Employee Removed"
@@ -44,5 +42,3 @@ class EmployeeController:
 
     def find_all(self):
         return self.service.find_all()
-
-

@@ -8,17 +8,17 @@ class PaymentService:
 
         # ایجاد پرداخت
     def process_payment(self, account, amount, person):
-        payment_id = len(self.payment_repository.payments) + 1
-        new_payment = Payment(payment_id, account, amount, person)
+        id = len(self.payment_repository.payments) + 1
+        new_payment = Payment(id, account, amount, person)
 
         # ذخیره پرداخت در repository
         return self.payment_repository.save(new_payment)
 
-    def find_payment_by_id(self, payment_id):
-        payment = self.payment_repository.find_by_id(payment_id)
+    def find_payment_by_id(self, id):
+        payment = self.payment_repository.find_by_id(id)
         if payment:
             return payment
-        return f"Payment with ID {payment_id} not found."
+        return f"Payment with ID {id} not found."
 
     def get_all_payments(self):
         payments = self.payment_repository.find_all()
@@ -27,10 +27,10 @@ class PaymentService:
         else:
             return "Payments not found !!"
 
-    def edit_payment(self, payment_id, amount=None, date_time=None, person=None):
-        payment = self.payment_repository.find_by_id(payment_id)
+    def edit_payment(self, id, amount=None, date_time=None, person=None):
+        payment = self.payment_repository.find_by_id(id)
         if not payment:
-            return f"Payment with ID {payment_id} not found."
+            return f"Payment with ID {id} not found."
 
         if amount is not None:
             payment.amount = amount
@@ -40,12 +40,12 @@ class PaymentService:
             payment.person = person
 
         self.payment_repository.edit(payment)
-        return f"Payment with ID {payment_id} updated successfully."
+        return f"Payment with ID {id} updated successfully."
 
-    def remove_payment(self, payment_id):
-        payment = self.payment_repository.find_by_id(payment_id)
+    def remove_payment(self, id):
+        payment = self.payment_repository.find_by_id(id)
         if not payment:
-            return f"Payment with ID {payment_id} not found."
+            return f"Payment with ID {id} not found."
 
-        self.payment_repository.remove(payment_id)
-        return f"Payment with ID {payment_id} removed successfully."
+        self.payment_repository.remove(id)
+        return f"Payment with ID {id} removed successfully."
