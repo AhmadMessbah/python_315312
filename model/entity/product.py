@@ -1,3 +1,4 @@
+# python cant find it(error > no module named product validator)
 from product_validation import *
 
 class Product:
