@@ -16,8 +16,8 @@ def model_validator(model):
 def barcode_validator(barcode):
     if type(barcode) == str and re.match(r"^[a-zA-Z1-9]{10}$", barcode):
         return barcode
-def buy_sell_validator(buy_price, sell_price):
-    if type(buy_price,sell_price) == int :
-        return buy_price , sell_price
+def buy_sell_validator(price):
+    if type(price) == int :
+        return price
     else:
         return 0

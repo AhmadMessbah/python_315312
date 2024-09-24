@@ -25,19 +25,39 @@ class Product:
     def get_name(self):
         return self._name
 
-    def set_name(self, author):
+    def set_name(self, name):
         self._name = name_validator(name)
 
     def get_brand(self):
         return self._brand
 
-    def set_pages(self, pages):
+    def set_pages(self, brand):
         self._brand = brand_validator(brand)
 
     def get_model(self):
         return self._model
 
+    def set_model(self, model):
+        self._model = model_validator(model)
 
-    # title = property(get_title, set_title)
-    # author = property(get_author, set_author)
-    # pages = property(get_pages, set_pages)
+    def get_barcode(self):
+        return self._barcode
+
+    def set_barcode(self, barcode):
+        self._barcode = barcode_validator(barcode)
+
+    def get_buy_price(self):
+        return self._buy_price
+
+    def set_buy_price(self, buy_price):
+        self._buy_price = buy_sell_validator(buy_price)
+
+    def get_sell_price(self):
+        return self._sell_price
+
+    def set_sell_price(self, sell_price):
+        self._sell_price = buy_sell_validator(sell_price)
+
+
+
+
