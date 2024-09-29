@@ -4,22 +4,19 @@ from model.service.payment_service import PaymentService
 
 class PaymentController:
     @classmethod
-    def __init__(cls):
-        cls.service = PaymentService()
-
-    @classmethod
-    def process_payment(cls, id, account_id, amount, person):
-        # payment entity setter
-        pay = Payment(None, account_id, amount, person)
+    def process_payment(cls, account_id, amount, person):
         try:
+            pay = Payment(None, account_id, amount, person)
+            PaymentService.process_payment(pay)
             return True, 'Payment Saved'
         except Exception as e:
             return False, str(e)
 
     @classmethod
     def edit_payment(cls, id, account_id, amount, person):
-        pay = Payment(id, account_id, amount, person)
         try:
+            pay = Payment(id, account_id, amount, person)
+            PaymentService.edit_payment(pay)
             return True, 'Payment Edited'
         except Exception as e:
             return False, str(e)
@@ -27,21 +24,21 @@ class PaymentController:
     @classmethod
     def remove_payment(cls, id):
         try:
+            PaymentService.remove_payment(id)
             return True, 'Payment Removed'
         except Exception as e:
             return False, str(e)
 
     @classmethod
-    def find_payment_by_id(cls, id):
-        payment = cls.service.find_payment_by_id(id)
-        try:
-            return True, 'Payment Found', payment
-        except Exception as e:
-            return False, str(e), f"Payment {id} not found"
-
-    @classmethod
     def get_all_payments(cls):
         try:
-            return True, cls.service.get_all_payments()
+            return True, PaymentService.get_all_payments()
+        except Exception as e:
+            return False, str(e)
+
+    @classmethod
+    def find_payment_by_id(cls, id):
+        try:
+            return True, PaymentService.find_by_id(id)
         except Exception as e:
             return False, str(e)
