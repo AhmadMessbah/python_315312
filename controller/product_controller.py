@@ -3,13 +3,9 @@ from model.entity.product import Product
 from model.service.product_service import ProductService
 
 class ProductController:
-    def __init__(self):
-        self.service = ProductService()
 
     def save(self, name, brand, model, barcode, buy_price, sell_price):
-        # مدیریت خطا
-        #پاسخ
-        # اعتبارسنجی
+
         if (re.match(r"^[a-zA-Z\s]{2,20}$", name) and
             re.match(r"^[a-zA-Z\s]{2,20}$", brand) and
             re.match(r"^[a-zA-Z0-9\s]{2,20}$", model) and

@@ -2,29 +2,30 @@ from model.repository.employee_repository import EmployeeRepository
 
 
 class EmployeeService:
-    def __init__(self):
-        self.repo = EmployeeRepository()
+    repo = EmployeeRepository()
 
-    def save(self, employee):
-        if 20 <= employee.age <=30:
-            self.repo.save(employee)
+    @classmethod
+    def save(cls, employee):
+        if 20 <= employee.age <= 30:
+            cls.repo.save(employee)
         else:
-            return "Age is not valid !!!"
+            return ValueError("Age is not valid !!!")
 
-    def edit(self, employee):
-        if 20 <= employee.age <=30:
-            self.repo.edit(employee)
+    @classmethod
+    def edit(cls, employee):
+        if 20 <= employee.age <= 30:
+            cls.repo.edit(employee)
         else:
-            return "Age is not valid !!!"
+            return ValueError("Age is not valid !!!")
 
+    @classmethod
+    def remove(cls, id):
+        cls.repo.remove(id)
 
-    def remove(self, id):
-        self.repo.remove(id)
+    @classmethod
+    def find_all(cls):
+        return cls.repo.find_all()
 
-
-    def find_all(self):
-        return self.repo.find_all()
-
-
-    def find_by_id(self, id):
-        return self.repo.find_by_id(id)
+    @classmethod
+    def find_by_id(cls, id):
+        return cls.repo.find_by_id(id)

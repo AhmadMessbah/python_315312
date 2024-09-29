@@ -1,6 +1,5 @@
 from model.entity.payment import Payment
 from model.service.payment_service import PaymentService
-import re
 
 
 class PaymentController:
