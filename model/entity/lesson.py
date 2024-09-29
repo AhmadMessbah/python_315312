@@ -1,5 +1,9 @@
 import re
+from model.tools.lesson_validation import Validation
 
+
+# if re.match(r"^[a-zA-z\s]{2,20}$", title) and re.match(r"^[a-zA-z0-9\s]{2,20}$", start_date):
+#
 class Lesson:
     def __init__(self, id, title, week_day, start_date, start_time, end_time):
 

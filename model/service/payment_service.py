@@ -4,9 +4,6 @@ from model.entity.payment import Payment
 class PaymentService:
     
     
-    def __init_(self):
-        self.payment_repository = PaymentRepository()
-
         # ایجاد پرداخت
     @classmethod
     def process_payment(cls, account, amount, person):
@@ -37,14 +34,14 @@ class PaymentService:
     def edit_payment(cls, id, amount=None, date_time=None, person=None):
         payment_repository = PaymentRepository()
         try:
-            payment = payment_repository.find_all(id)
+            payment = payment_repository.find_by_all(id)
             payment_repository.edit(payment)
             return f"Payment with ID {id} updated."
         except:
             return f"Payment with ID {id} not found."
         
     @classmethod        
-    def remove_payment(self, id):
+    def remove_payment(cls, id):
         payment_repository = PaymentRepository()
         try:
             payment_repository.remove(id)
