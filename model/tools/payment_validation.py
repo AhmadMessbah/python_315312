@@ -4,6 +4,13 @@ import re
 class PaymentValidation:
 
     @staticmethod
+    def id_validator(id, message):
+        if type(id) == int and re.match(r"^[1-9]{9}$", id):
+            return id
+        else:
+            return ValueError(message)
+
+    @staticmethod
     def person_validator(person, message):
         if type(person) == str and re.match(r"^[a-zA-Z\s]{2,20}$", person):
             return person
