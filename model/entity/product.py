@@ -1,5 +1,9 @@
 # python cant find it(error > no module named product validator)
+from pefile import PrologEpilogOpSetFP
+
 from model.entity.product_validation import *
+from model.tools.validation import Validation
+
 
 class Product:
     def __init__(self, id, name, brand, model,barcode,buy_price,sell_price):
@@ -17,23 +21,29 @@ class Product:
     def to_tuple(self):
         return tuple(self.__dict__.values())
 
-    def get_id(self):
-        return self._id
+    @property
+    def id(self):
+        return self.id
 
-    def set_id(self, id):
-        self._id = id_validator(id)
+    @id.setter
+    def id(self, id):
+        self.id = Validation.id_validator(id, "Invalid id")
 
-    def get_name(self):
-        return self._name
+    @property
+    def name(self):
+        return self.name
 
-    def set_name(self, name):
-        self._name = name_validator(name)
+    @name.setter
+    def name(self, name):
+        self.name = Validation.name_validator(name, "Invalid Name")
 
-    def get_brand(self):
-        return self._brand
+    @property
+    def brand(self):
+        return self.brand
 
-    def set_pages(self, brand):
-        self._brand = brand_validator(brand)
+    @brand.setter
+    def brand(self, brand):
+
 
     def get_model(self):
         return self._model
