@@ -3,17 +3,18 @@ from model.service.payment_service import PaymentService
 
 
 class PaymentController:
-    def __init__(self):
-        self.service = PaymentService()
+#    def __init__(self):
+#        self.service = PaymentService()
 
-    def process_payment(self, id, account_id, amount, person):
+    @classmethod
+    def process_payment(cls, id, account_id, amount, person):
         # payment entity setter
-        pay = Payment(None, account_id, amount, person)
-        error = self.service.process_payment(pay)
-        if not error:
+        try:
+            pay = Payment(None, account_id, amount, person)
+            PaymentService.process_payment(pay)
             return True, "Info: Payment Saved!"
-        else:
-            return False, error
+        except Exception as e:
+            return False, str(e)
 
     def edit_payment(self, id, account_id, amount, person):
         pay = Payment(id, account_id, amount, person)
