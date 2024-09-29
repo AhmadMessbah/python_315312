@@ -1,26 +1,23 @@
 from model.repository.payment_repository import PaymentRepository
 from model.entity.payment import Payment
 
+
+# save, edit, remove, find_all, find_by_id
+
 class PaymentService:
-    
-    
-        # ایجاد پرداخت
+    repo = PaymentRepository()
+
     @classmethod
     def process_payment(cls, account, amount, person):
-        id = len(cls.payment_repository.payments) + 1
         new_payment = Payment(id, account, amount, person)
 
-        return cls.payment_repository.save(new_payment)
+        return cls.repo.save(new_payment)
 
     @classmethod
-    def find_payment_by_id(cls, id):
-        payment_repository = PaymentRepository()
-        try:
-            payment = payment_repository.find_by_id(id)
-            return payment
-        except:
-            return f"Payment with ID {id} not found." 
-        
+    def find_by_id(cls, id):
+        return repo.find_by_id(id)
+
+
     @classmethod
     def get_all_payments(cls):
         payment_repository = PaymentRepository()
@@ -29,6 +26,7 @@ class PaymentService:
             return payments
         except:
             return "Payments not found!!!"
+
 
     @classmethod
     def edit_payment(cls, id, amount=None, date_time=None, person=None):
@@ -39,8 +37,9 @@ class PaymentService:
             return f"Payment with ID {id} updated."
         except:
             return f"Payment with ID {id} not found."
-        
-    @classmethod        
+
+
+    @classmethod
     def remove_payment(cls, id):
         payment_repository = PaymentRepository()
         try:
