@@ -1,7 +1,7 @@
 import re
 from model.entity.product import Product
 from model.service.product_service import ProductService
-
+# ʕ •ᴥ•ʔ
 class ProductController:
 
     @classmethod
@@ -9,7 +9,7 @@ class ProductController:
         try:
             product = Product(None, name, brand, model, barcode, buy_price, sell_price)
             ProductService.save(product)
-            return True, "Product Saved ʕ •ᴥ•ʔ"
+            return True, "Product Saved"
         except Exception as e:
             return False, str(e)
 
@@ -33,5 +33,12 @@ class ProductController:
     def find_all(cls):
         try:
             return True, ProductService.find_all()
+        except Exception as e:
+            return False, str(e)
+
+    @classmethod
+    def find_by_id(cls, id):
+        try:
+            return True, ProductService.find_by_id(id)
         except Exception as e:
             return False, str(e)
