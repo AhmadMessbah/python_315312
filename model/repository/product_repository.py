@@ -18,7 +18,7 @@ class ProductRepository:
         self.cursor.close()
         self.connection.close()
 
-    def save(self, product):
+    def save(self, product: object) -> object:
         self.connect()
         self.cursor.execute("insert into product_tbl (id,name,brand,model,barcode,buy_price,sell_price) values (%s,%s,%s,%s,%s,%s,%s)",
                             [product.id, product.name, product.brand, product.model, product.barcode, product.buy_price, product.sell_price])
