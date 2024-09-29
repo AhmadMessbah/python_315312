@@ -76,7 +76,10 @@ class Product:
 
     @sell_price.setter
     def sell_price(self, sell_price):
-        self.sell_price = ProductValidation.buy_sell_validator(sell_price, "Invalid sell price")
+        self.sell_price = ProductValidation.buy_sell_validator(sell_price, "Invalid sell price")\
+
+
+# test
 
 
 
