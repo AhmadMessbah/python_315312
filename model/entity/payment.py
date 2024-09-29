@@ -1,6 +1,8 @@
 from datetime import datetime
 import re
-from model.tools.payment_validation import person_validator, account_int, amount_int
+from model.tools.payment_validation import PaymentValidation
+
+
 class Payment:
     # todo D Group: id, account, amount, date_time, person
     def __init__(self, id, account_id, amount, person):
@@ -29,7 +31,7 @@ class Payment:
 
     @account_id.setter
     def account_id(self, account_id):
-        self._account_id = account_int(account_id)
+        self._account_id = PaymentValidation.account_int(account_id, "Invalid Account Id")
 
     @property
     def amount(self):
@@ -37,7 +39,7 @@ class Payment:
 
     @amount.setter
     def amount(self, amount):
-        self._amount = amount_int(amount)
+        self._amount = PaymentValidation.amount_int(amount, "Invalid Amount")
 
     @property
     def person(self):
@@ -45,9 +47,6 @@ class Payment:
 
     @person.setter
     def person(self, person):
-        self._person = person_validator(person)
-
-
+        self._person = PaymentValidation.person_validator(person, "Invalid Person")
 
 # if isinstance(date_time, datetime) else datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
-
