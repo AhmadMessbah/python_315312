@@ -1,9 +1,6 @@
 from model.repository.payment_repository import PaymentRepository as repo
 from model.entity.payment import Payment
 
-
-# save, edit, remove, find_all, find_by_id
-
 class PaymentService:
 
 
