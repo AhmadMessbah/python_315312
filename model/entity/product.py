@@ -2,7 +2,8 @@
 from pefile import PrologEpilogOpSetFP
 
 # from model.entity.product_validation import *
-from model.tools.validation import Validation
+from model.tools.product_validation import ProductValidation
+
 
 
 class Product:
@@ -27,7 +28,7 @@ class Product:
 
     @id.setter
     def id(self, id):
-        self.id = Validation.id_validator(id, "Invalid id")
+        self.id = ProductValidation.id_validator(id, "Invalid id")
 
     @property
     def name(self):
@@ -35,7 +36,7 @@ class Product:
 
     @name.setter
     def name(self, name):
-        self.name = Validation.name_validator(name, "Invalid Name")
+        self.name = ProductValidation.name_validator(name, "Invalid Name")
 
     @property
     def brand(self):
@@ -43,7 +44,7 @@ class Product:
 
     @brand.setter
     def brand(self, brand):
-        self.brand = Validation.brand_validator(brand, "Invalid brand")
+        self.brand = ProductValidation.brand_validator(brand, "Invalid brand")
 
     @property
     def model(self):
@@ -51,7 +52,7 @@ class Product:
 
     @model.setter
     def model(self, model):
-        self.brand = Validation.model_validator(model, "Invalid model")
+        self.brand = ProductValidation.model_validator(model, "Invalid model")
 
     @property
     def barcode(self):
@@ -59,7 +60,7 @@ class Product:
 
     @barcode.setter
     def barcode(self, barcode):
-        self.barcode = Validation.barcode_validator(barcode, "Invalid barcode")
+        self.barcode = ProductValidation.barcode_validator(barcode, "Invalid barcode")
 
     @property
     def buy_price(self):
@@ -67,15 +68,18 @@ class Product:
 
     @buy_price.setter
     def buy_price(self, buy_price):
-        self.buy_price = Validation.buy_price(buy_price, "Invalid buy price")
+        self.buy_price = ProductValidation.buy_sell_validator(buy_price, "Invalid buy price")
 
     @property
     def sell_price(self):
         return self.sell_price
 
     @sell_price.setter
-    def sell_price(self, value):
-        self.sell_price = Validation.sell_price(sell_price, "Invalid sell price")
+    def sell_price(self, sell_price):
+        self.sell_price = ProductValidation.buy_sell_validator(sell_price, "Invalid sell price")\
+
+
+# test
 
 
 
