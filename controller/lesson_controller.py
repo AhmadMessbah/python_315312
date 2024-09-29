@@ -34,7 +34,7 @@ class LessonController:
     @classmethod
     def find_all(cls):
         try:
-            return True, LessonService.find_all(cls)
+            return True, LessonService.find_all()
         except Exception as e:
             return False, str(e)
 
