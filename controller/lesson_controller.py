@@ -1,42 +1,46 @@
-import re
-
 from model.entity.lesson import Lesson
 from model.service.lesson_service import LessonService
 
 
 class LessonController:
-    def __init__(self):
-        self.service = LessonService()
 
-    def save(self, title, week_day, start_date,start_time,end_time):
+    @classmethod
+    def save(cls, title, week_day, start_date, start_time, end_time):
+        try:
 
-        if re.match(r"^[a-zA-z\s]{2,20}$", title) and re.match(r"^[a-zA-z0-9\s]{2,20}$", start_date):
-            lessn = Lesson(None, week_day, start_date,start_time,end_time)
-            error = self.service.save(lessn)
-            if not error:
-                return True, "Info : Lesson Saved"
-            else:
-                return False, error
-        else:
-            return False, "Error : Invalid Data"
+            lesson = Lesson(title, week_day, start_date, start_time, end_time)
+            LessonService.save(lesson)
+            return True, "lesson saved"
+        except Exception as e:
+            return False, str(e)
 
-    def edit(self, week_day, start_date,start_time,end_time):
-        if re.match(r"^[a-zA-z\s]{2,20}$", title) and re.match(r"^[a-zA-z0-9\s]{2,20}$", start_date):
-            lessn = Lesson(id, week_day, start_date,start_time,end_time)
-            error = self.service.edit(lessn)
-            if not error:
-                return True, "Lesson Edited"
-            else:
-                return False, error
-        else:
-            return False, "Invalid Data"
+    @classmethod
+    def edit(cls, id, title, week_day, start_date, start_time, end_time):
+        try:
+            lesson = Lesson(id, title, week_day, start_date, start_time, end_time)
+            LessonService.edit(lesson)
+            return True, "lesson edited"
+        except Exception as e:
+            return False, str(e)
 
-    def remove(self, id):
-        error = self.service.remove(id)
-        if not error:
-            return True, "Lesson Removed"
-        else:
-            return False, error
+    @classmethod
+    def remove(cls, id):
+        try:
+            LessonService.remove(id)
+            return True, "lesson removed"
+        except Exception as e:
+            return False, str(e)
 
-    def find_all(self):
-        return self.service.find_all()
+    @classmethod
+    def find_all(cls):
+        try:
+            return True, LessonService.find_all(cls)
+        except Exception as e:
+            return False, str(e)
+
+    @classmethod
+    def find_by_id(cls, id):
+        try:
+            return True, LessonService.find_by_id(id)
+        except Exception as e:
+            return False, str(e)

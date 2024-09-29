@@ -1,51 +1,49 @@
-## service/payment_service.py - Creator: power0matin
 from model.repository.payment_repository import PaymentRepository
 from model.entity.payment import Payment
 
-class PaymentService:
-    def __init__(self):
-        self.payment_repository = PaymentRepository()
 
-        # ایجاد پرداخت
-    def process_payment(self, account, amount, person):
-        id = len(self.payment_repository.payments) + 1
+# save, edit, remove, find_all, find_by_id
+
+class PaymentService:
+    repo = PaymentRepository()
+
+    @classmethod
+    def process_payment(cls, account, amount, person):
         new_payment = Payment(id, account, amount, person)
 
-        # ذخیره پرداخت در repository
-        return self.payment_repository.save(new_payment)
+        return cls.repo.save(new_payment)
 
-    def find_payment_by_id(self, id):
-        payment = self.payment_repository.find_by_id(id)
-        if payment:
-            return payment
-        return f"Payment with ID {id} not found."
+    @classmethod
+    def find_by_id(cls, id):
+        return repo.find_by_id(id)
 
-    def get_all_payments(self):
-        payments = self.payment_repository.find_all()
-        if payments:
+
+    @classmethod
+    def get_all_payments(cls):
+        payment_repository = PaymentRepository()
+        try:
+            payments = payment_repository.find_all()
             return payments
-        else:
-            return "Payments not found !!"
+        except:
+            return "Payments not found!!!"
 
-    def edit_payment(self, id, amount=None, date_time=None, person=None):
-        payment = self.payment_repository.find_by_id(id)
-        if not payment:
+
+    @classmethod
+    def edit_payment(cls, id, amount=None, date_time=None, person=None):
+        payment_repository = PaymentRepository()
+        try:
+            payment = payment_repository.find_by_all(id)
+            payment_repository.edit(payment)
+            return f"Payment with ID {id} updated."
+        except:
             return f"Payment with ID {id} not found."
 
-        if amount is not None:
-            payment.amount = amount
-        if date_time is not None:
-            payment.date_time = date_time
-        if person is not None:
-            payment.person = person
 
-        self.payment_repository.edit(payment)
-        return f"Payment with ID {id} updated successfully."
-
-    def remove_payment(self, id):
-        payment = self.payment_repository.find_by_id(id)
-        if not payment:
-            return f"Payment with ID {id} not found."
-
-        self.payment_repository.remove(id)
-        return f"Payment with ID {id} removed successfully."
+    @classmethod
+    def remove_payment(cls, id):
+        payment_repository = PaymentRepository()
+        try:
+            payment_repository.remove(id)
+            return f"Payment with ID {id} removed"
+        except:
+            return f"Payment with ID {id} not found"

@@ -1,5 +1,10 @@
 # python cant find it(error > no module named product validator)
-from model.entity.product_validation import *
+from pefile import PrologEpilogOpSetFP
+
+# from model.entity.product_validation import *
+from model.tools.product_validation import ProductValidation
+
+
 
 class Product:
     def __init__(self, id, name, brand, model,barcode,buy_price,sell_price):
@@ -17,47 +22,64 @@ class Product:
     def to_tuple(self):
         return tuple(self.__dict__.values())
 
-    def get_id(self):
-        return self._id
+    @property
+    def id(self):
+        return self.id
 
-    def set_id(self, id):
-        self._id = id_validator(id)
+    @id.setter
+    def id(self, id):
+        self.id = ProductValidation.id_validator(id, "Invalid id")
 
-    def get_name(self):
-        return self._name
+    @property
+    def name(self):
+        return self.name
 
-    def set_name(self, name):
-        self._name = name_validator(name)
+    @name.setter
+    def name(self, name):
+        self.name = ProductValidation.name_validator(name, "Invalid Name")
 
-    def get_brand(self):
-        return self._brand
+    @property
+    def brand(self):
+        return self.brand
 
-    def set_pages(self, brand):
-        self._brand = brand_validator(brand)
+    @brand.setter
+    def brand(self, brand):
+        self.brand = ProductValidation.brand_validator(brand, "Invalid brand")
 
-    def get_model(self):
-        return self._model
+    @property
+    def model(self):
+        return self.model
 
-    def set_model(self, model):
-        self._model = model_validator(model)
+    @model.setter
+    def model(self, model):
+        self.brand = ProductValidation.model_validator(model, "Invalid model")
 
-    def get_barcode(self):
-        return self._barcode
+    @property
+    def barcode(self):
+        return self.barcode
 
-    def set_barcode(self, barcode):
-        self._barcode = barcode_validator(barcode)
+    @barcode.setter
+    def barcode(self, barcode):
+        self.barcode = ProductValidation.barcode_validator(barcode, "Invalid barcode")
 
-    def get_buy_price(self):
-        return self._buy_price
+    @property
+    def buy_price(self):
+        return self.buy_price
 
-    def set_buy_price(self, buy_price):
-        self._buy_price = buy_sell_validator(buy_price)
+    @buy_price.setter
+    def buy_price(self, buy_price):
+        self.buy_price = ProductValidation.buy_sell_validator(buy_price, "Invalid buy price")
 
-    def get_sell_price(self):
-        return self._sell_price
+    @property
+    def sell_price(self):
+        return self.sell_price
 
-    def set_sell_price(self, sell_price):
-        self._sell_price = buy_sell_validator(sell_price)
+    @sell_price.setter
+    def sell_price(self, sell_price):
+        self.sell_price = ProductValidation.buy_sell_validator(sell_price, "Invalid sell price")
+
+
+# test
 
 
 
