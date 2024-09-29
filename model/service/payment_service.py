@@ -41,7 +41,7 @@ class PaymentService:
             return f"Payment with ID {id} not found."
         
     @classmethod        
-    def remove_payment(self, id):
+    def remove_payment(cls, id):
         payment_repository = PaymentRepository()
         try:
             payment_repository.remove(id)
