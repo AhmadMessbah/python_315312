@@ -1,5 +1,5 @@
 from model.repository.product_repository import ProductRepository
-from model.entity.product import Product
+
 
 class ProductService:
     repo = ProductRepository()
@@ -22,13 +22,13 @@ class ProductService:
 
 
     @classmethod
-    def remove(cls, id):
-        cls.repo.remove(id)
+    def remove(cls, _id):
+        cls.repo.remove(_id)
 
     @classmethod
     def find_all(cls):
         return cls.repo.find_all()
 
     @classmethod
-    def find_by_id(cls, id):
-        return cls.repo.find_by_id(id)
+    def find_by_id(cls, _id):
+        return cls.repo.find_by_id(_id)
