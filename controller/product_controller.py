@@ -1,6 +1,7 @@
 import re
 from model.entity.product import Product
 from model.service.product_service import ProductService
+# ʕ •ᴥ•ʔ
 class ProductController:
 
     @classmethod
@@ -8,7 +9,7 @@ class ProductController:
         try:
             product = Product(None, name, brand, model, barcode, buy_price, sell_price)
             ProductService.save(product)
-            return True, "Product Saved ʕ •ᴥ•ʔ"
+            return True, "Product Saved"
         except Exception as e:
             return False, str(e)
 
