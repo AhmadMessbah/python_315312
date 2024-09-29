@@ -1,29 +1,34 @@
 from model.repository.product_repository import ProductRepository
-from model.entity.product import Product
+
 
 class ProductService:
-    def __init__(self):
-        self.repo = ProductRepository()
+    repo = ProductRepository()
 
-    def save(self, product):
-        if product.buy_price < product.sell_price:
-            self.repo.save(product)
-        else:
-            return "Sell price should be greater than buy price !!!"
+    @classmethod
+    def save(cls, product):
+        try:
+            if product.buy_price < product.sell_price:
+                cls.repo.save(product)
+        except:
+            raise ValueError("Sell price should be greater than buy price !!!")
 
-    def edit(self, product):
-        if product.buy_price < product.sell_price:
-            self.repo.edit(product)
-        else:
-            return "Sell price should be greater than buy price !!!"
-
-
-    def remove(self, id):
-        self.repo.remove(id)
-
-    def find_all(self):
-        return self.repo.find_all()
+    @classmethod
+    def edit(cls, product):
+        try:
+            if product.buy_price < product.sell_price:
+                cls.repo.edit(product)
+        except:
+            raise ValueError("Sell price should be greater than buy price !!!")
 
 
-    def find_by_id(self, id):
-        return self.repo.find_by_id(id)
+    @classmethod
+    def remove(cls, _id):
+        cls.repo.remove(_id)
+
+    @classmethod
+    def find_all(cls):
+        return cls.repo.find_all()
+
+    @classmethod
+    def find_by_id(cls, _id):
+        return cls.repo.find_by_id(_id)

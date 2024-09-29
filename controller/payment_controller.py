@@ -3,39 +3,45 @@ from model.service.payment_service import PaymentService
 
 
 class PaymentController:
-    def __init__(self):
-        self.service = PaymentService()
+    @classmethod
+    def __init__(cls):
+        cls.service = PaymentService()
 
-    def process_payment(self, id, account_id, amount, person):
+    @classmethod
+    def process_payment(cls, id, account_id, amount, person):
         # payment entity setter
         pay = Payment(None, account_id, amount, person)
-        error = self.service.process_payment(pay)
-        if not error:
-            return True, "Info: Payment Saved!"
-        else:
-            return False, error
+        try:
+            return True, 'Payment Saved'
+        except Exception as e:
+            return False, str(e)
 
-    def edit_payment(self, id, account_id, amount, person):
+    @classmethod
+    def edit_payment(cls, id, account_id, amount, person):
         pay = Payment(id, account_id, amount, person)
-        error = self.service.edit_payment(pay)
-        if not error:
-            return True, "Payment Has Been Edited!"
-        else:
-            return False, error
+        try:
+            return True, 'Payment Edited'
+        except Exception as e:
+            return False, str(e)
 
-    def remove_payment(self, id):
-        error = self.service.remove_payment(id)
-        if not error:
-            return True, "Payment Has Been Removed!"
-        else:
-            return False, error
+    @classmethod
+    def remove_payment(cls, id):
+        try:
+            return True, 'Payment Removed'
+        except Exception as e:
+            return False, str(e)
 
-    def find_payment_by_id(self, id):
-        payment = self.service.find_payment_by_id(id)
-        if payment:
-            return "Payment Found!", payment
-        else:
-            return f"Payment With ID {id} Not Found!"
+    @classmethod
+    def find_payment_by_id(cls, id):
+        payment = cls.service.find_payment_by_id(id)
+        try:
+            return True, 'Payment Found', payment
+        except Exception as e:
+            return False, str(e), f"Payment {id} not found"
 
-    def get_all_payments(self):
-        return self.service.get_all_payments()
+    @classmethod
+    def get_all_payments(cls):
+        try:
+            return True, cls.service.get_all_payments()
+        except Exception as e:
+            return False, str(e)
