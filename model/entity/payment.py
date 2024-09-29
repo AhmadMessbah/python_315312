@@ -1,6 +1,6 @@
 from datetime import datetime
 import re
-from payment_validation import person_validator, account_int, amount_int
+from model.tools.payment_validation import person_validator, account_int, amount_int
 class Payment:
     # todo D Group: id, account, amount, date_time, person
     def __init__(self, id, account_id, amount, person):
