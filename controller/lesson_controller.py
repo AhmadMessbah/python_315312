@@ -17,8 +17,8 @@ class LessonController:
     @classmethod
     def edit(cls, id, title, week_day, start_date, start_time, end_time):
         try:
-            lessn = Lesson(id, title, week_day, start_date, start_time, end_time)
-            LessonService.edit(lessn)
+            lesson = Lesson(id, title, week_day, start_date, start_time, end_time)
+            LessonService.edit(lesson)
             return True, "lesson edited"
         except Exception as e:
             return False, str(e)
