@@ -8,7 +8,7 @@ class ProductController:
         try:
             product = Product(None, name, brand, model, barcode, buy_price, sell_price)
             ProductService.save(product)
-            return True, "Product Saved"
+            return True, "Product Saved ʕ •ᴥ•ʔ"
         except Exception as e:
             return False, str(e)
     @classmethod
