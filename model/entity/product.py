@@ -1,8 +1,9 @@
 # python cant find it(error > no module named product validator)
 from pefile import PrologEpilogOpSetFP
 
-from model.entity.product_validation import *
-from model.tools.validation import Validation
+# from model.entity.product_validation import *
+from model.tools.product_validation import ProductValidation
+
 
 
 class Product:
@@ -27,7 +28,7 @@ class Product:
 
     @id.setter
     def id(self, id):
-        self.id = Validation.id_validator(id, "Invalid id")
+        self.id = ProductValidation.id_validator(id, "Invalid id")
 
     @property
     def name(self):
@@ -35,7 +36,7 @@ class Product:
 
     @name.setter
     def name(self, name):
-        self.name = Validation.name_validator(name, "Invalid Name")
+        self.name = ProductValidation.name_validator(name, "Invalid Name")
 
     @property
     def brand(self):
@@ -43,31 +44,39 @@ class Product:
 
     @brand.setter
     def brand(self, brand):
+        self.brand = ProductValidation.brand_validator(brand, "Invalid brand")
 
+    @property
+    def model(self):
+        return self.model
 
-    def get_model(self):
-        return self._model
+    @model.setter
+    def model(self, model):
+        self.brand = ProductValidation.model_validator(model, "Invalid model")
 
-    def set_model(self, model):
-        self._model = model_validator(model)
+    @property
+    def barcode(self):
+        return self.barcode
 
-    def get_barcode(self):
-        return self._barcode
+    @barcode.setter
+    def barcode(self, barcode):
+        self.barcode = ProductValidation.barcode_validator(barcode, "Invalid barcode")
 
-    def set_barcode(self, barcode):
-        self._barcode = barcode_validator(barcode)
+    @property
+    def buy_price(self):
+        return self.buy_price
 
-    def get_buy_price(self):
-        return self._buy_price
+    @buy_price.setter
+    def buy_price(self, buy_price):
+        self.buy_price = ProductValidation.buy_sell_validator(buy_price, "Invalid buy price")
 
-    def set_buy_price(self, buy_price):
-        self._buy_price = buy_sell_validator(buy_price)
+    @property
+    def sell_price(self):
+        return self.sell_price
 
-    def get_sell_price(self):
-        return self._sell_price
-
-    def set_sell_price(self, sell_price):
-        self._sell_price = buy_sell_validator(sell_price)
+    @sell_price.setter
+    def sell_price(self, sell_price):
+        self.sell_price = ProductValidation.buy_sell_validator(sell_price, "Invalid sell price")
 
 
 
