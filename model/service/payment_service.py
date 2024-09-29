@@ -4,9 +4,6 @@ from model.entity.payment import Payment
 class PaymentService:
     
     
-    def __init_(self):
-        self.payment_repository = PaymentRepository()
-
         # ایجاد پرداخت
     @classmethod
     def process_payment(cls, account, amount, person):
