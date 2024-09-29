@@ -38,7 +38,6 @@ class EmployeeRepository:
         self.connection.commit()
         self.disconnect()
 
-
     def find_all(self):
         self.connect()
         self.cursor.execute("select * from employee_tbl")
@@ -47,7 +46,6 @@ class EmployeeRepository:
         self.disconnect()
         if emp_list:
             return emp_list
-
 
     def find_by_id(self, id):
         self.connect()
