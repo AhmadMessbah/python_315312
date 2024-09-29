@@ -34,7 +34,7 @@ class PaymentService:
     def edit_payment(cls, id, amount=None, date_time=None, person=None):
         payment_repository = PaymentRepository()
         try:
-            payment = payment_repository.find_all(id)
+            payment = payment_repository.find_by_all(id)
             payment_repository.edit(payment)
             return f"Payment with ID {id} updated."
         except:
