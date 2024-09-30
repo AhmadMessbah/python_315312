@@ -44,3 +44,5 @@ class LessonController:
             return True, LessonService.find_by_id(id)
         except Exception as e:
             return False, str(e)
+
+    
