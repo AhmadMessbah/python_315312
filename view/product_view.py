@@ -32,9 +32,9 @@ class ProductView:
         self.name.set(pro[1])
         self.brand.set(pro[2])
         self.model.set(pro[3])
-        self.barcode.set(pro[2])
-        self.sell_price.set(pro[2])
-        self.buy_price.set(pro[2])
+        self.barcode.set(pro[4])
+        self.buy_price.set(pro[5])
+        self.sell_price.set(pro[6])
 
     def save_click(self):
         status, message = self.controller.save(
@@ -43,8 +43,8 @@ class ProductView:
             self.brand.get(),
             self.model.get(),
             self.barcode.get(),
-            self.sell_price.get(),
             self.buy_price.get(),
+            self.sell_price.get(),
         )
         if status:
             msg.showinfo("Save", message)
@@ -55,12 +55,12 @@ class ProductView:
     def edit_click(self):
         status, message = self.controller.edit(
             self.id.get(),
-            self.name.get(pro[1]),
-            self.brand.get(pro[2]),
-            self.model.get(pro[3]),
-            self.barcode.get(pro[2]),
-            self.sell_price.get(pro[2]),
-            self.buy_price.get(pro[2]),)
+            self.name.get(),
+            self.brand.get(),
+            self.model.get(),
+            self.barcode.get(),
+            self.buy_price.get(),
+            self.sell_price.get(),)
         if status:
             msg.showinfo("Edit", message)
             self.reset_form()
@@ -89,7 +89,7 @@ class ProductView:
         Label(win, text="model").place(x=20, y=140)
         Label(win, text="barcode").place(x=20, y=180)
         Label(win, text="buy_price").place(x=20, y=220)
-        Label(win, text="sell_price").place(x=20, y=10)
+        Label(win, text="sell_price").place(x=20, y=260)
 
 
         self.id = IntVar()
