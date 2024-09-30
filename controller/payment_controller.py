@@ -3,45 +3,44 @@ from model.service.payment_service import PaymentService
 
 
 class PaymentController:
-    @classmethod
-    def __init__(cls):
-        cls.service = PaymentService()
 
     @classmethod
-    def process_payment(cls, id, account_id, amount, person):
+    def save(cls, id, account_id, amount, person):
         # payment entity setter
-        pay = Payment(None, account_id, amount, person)
         try:
-            return True, 'Payment Saved'
+            pay = Payment(None, account_id, amount, person)
+            PaymentService.save(pay, amount, person)
+            return True, "Info: Payment Saved!"
         except Exception as e:
             return False, str(e)
 
     @classmethod
-    def edit_payment(cls, id, account_id, amount, person):
-        pay = Payment(id, account_id, amount, person)
+    def edit(cls, id, account_id, amount, person):
         try:
-            return True, 'Payment Edited'
+            pay = Payment(id, account_id, amount, person)
+            PaymentService.edit(pay, account_id, amount, person)
+            return True, "Payment Has Been Edited!"
         except Exception as e:
             return False, str(e)
 
     @classmethod
-    def remove_payment(cls, id):
+    def remove(cls, id):
         try:
-            return True, 'Payment Removed'
+            PaymentService.remove(id)
+            return True, "Info: Payment Removed!"
         except Exception as e:
             return False, str(e)
 
     @classmethod
-    def find_payment_by_id(cls, id):
-        payment = cls.service.find_payment_by_id(id)
+    def find_all(cls):
         try:
-            return True, 'Payment Found', payment
+            return True, PaymentService.find_all()
         except Exception as e:
-            return False, str(e), f"Payment {id} not found"
+            return False, str(e)
 
     @classmethod
-    def get_all_payments(cls):
+    def find_by_id(cls, id):
         try:
-            return True, cls.service.get_all_payments()
+            return True, PaymentService.find_by_id(id)
         except Exception as e:
             return False, str(e)
