@@ -60,7 +60,7 @@ class ProductView:
             self.model.get(),
             self.barcode.get(),
             self.buy_price.get(),
-            self.sell_price.get(),)
+            self.sell_price.get())
         if status:
             msg.showinfo("Edit", message)
             self.reset_form()
