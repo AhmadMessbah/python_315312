@@ -99,4 +99,4 @@ class PaymentView:
 
         self.reset_form()
 
-        win.mainloop()  #
+        win.mainloop()
