@@ -7,17 +7,11 @@ class EmployeeService:
 
     @classmethod
     def save(cls, employee):
-        if 20 <= employee.age <= 30:
-            cls.repo.save(employee)
-        else:
-            return ValueError("Age is not valid !!!")
+        cls.repo.save(employee)
 
     @classmethod
     def edit(cls, employee):
-        if 20 <= employee.age <= 30:
-            cls.repo.edit(employee)
-        else:
-            return ValueError("Age is not valid !!!")
+        cls.repo.edit(employee)
 
     @classmethod
     def remove(cls, id):
@@ -30,7 +24,6 @@ class EmployeeService:
     @classmethod
     def find_by_id(cls, id):
         return cls.repo.find_by_id(id)
-
 
     @classmethod
     def find_by(cls, by):
