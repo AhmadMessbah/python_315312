@@ -1,8 +1,9 @@
-from model.repository.employee_repository import EmployeeRepository
+from model.entity.employee import Employee
+from model.repository.crud_repository import CrudRepository
 
 
 class EmployeeService:
-    repo = EmployeeRepository()
+    repo = CrudRepository(Employee)
 
     @classmethod
     def save(cls, employee):
@@ -29,3 +30,8 @@ class EmployeeService:
     @classmethod
     def find_by_id(cls, id):
         return cls.repo.find_by_id(id)
+
+
+    @classmethod
+    def find_by(cls, by):
+        return cls.repo.find_by(by)

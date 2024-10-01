@@ -1,13 +1,14 @@
-from model.entity.employee import Employee
-from model.repository.employee_repository import EmployeeRepository
-from model.service.employee_service import EmployeeService
+# from controller.employee_controller import EmployeeController
+#
+#
+# controller = EmployeeController()
+# print(controller.save("ffff", "ggggg", 26))
 from controller.employee_controller import EmployeeController
+from model.entity.employee import Employee
 
-
-controller = EmployeeController()
-print(controller.save("ffff", "ggggg", 26))
-
-# emp1 = Employee(2, "aaaa", "bbbb", 27)
+emp1 = Employee(2, "aaaa", "bbbb", 27)
+print(emp1)
+print(emp1.to_tuple())
 #
 # emp_service = EmployeeService()
 # emp_service.save(emp1)
@@ -19,3 +20,6 @@ print(controller.save("ffff", "ggggg", 26))
 # em_repo.remove(2)
 # print(em_repo.find_all())
 # print(em_repo.find_by_id(100))
+
+
+print(EmployeeController.save("ali", "alipour", 20))

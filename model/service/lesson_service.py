@@ -1,10 +1,10 @@
 from model.entity.lesson import Lesson
-from model.repository.lesson_repository import LessonRepository
+from model.repository.crud_repository import CrudRepository
 
 
 class LessonService:
     def __init__(self):
-        self.repo = LessonRepository()
+        self.repo = CrudRepository(Lesson)
 
     def save(self, lesson):
         if lesson.start_time < lesson.end_time:
@@ -29,3 +29,7 @@ class LessonService:
 
     def find_by_id(self, id):
         return self.repo.find_by_id(id)
+
+    @classmethod
+    def find_by(cls, by):
+        return cls.repo.find_by(by)

@@ -1,4 +1,3 @@
-from model.repository.payment_repository import PaymentRepository as repo
 from model.entity.payment import Payment
 
 

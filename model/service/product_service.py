@@ -1,4 +1,4 @@
-from model.repository.product_repository import ProductRepository
+from model.repository.old.product_repository import ProductRepository
 
 
 class ProductService:

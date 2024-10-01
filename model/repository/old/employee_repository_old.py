@@ -20,6 +20,7 @@ class EmployeeRepository:
 
     def save(self, employee):
         self.connect()
+
         self.cursor.execute("insert into employee_tbl (name,family,age) values (%s,%s,%s)",
                             [employee.name, employee.family, employee.age])
         self.connection.commit()

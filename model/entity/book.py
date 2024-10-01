@@ -1,6 +1,9 @@
 import re
 
-from book_validation import *
+from sqlalchemy import Column, Integer, String, Boolean
+
+from model.entity.book_validation import *
+from model.entity.base import Base
 
 
 # model.entity
@@ -9,17 +12,20 @@ from book_validation import *
 # property
 # __repr__, __str__
 
-class Book:
-    def __init__(self, title, author, pages):
+class Book(Base):
+    __tablename__ = "book_tbl"
+
+    _id = Column("id", Integer, primary_key=True, autoincrement=True)
+    _title = Column("title",String(20), nullable=False)
+    _author = Column("author", String(20), nullable=False)
+    _pages = Column("pages", Integer, default=0)
+
+    def __init__(self,id, title, author, pages):
+        self._id = id
         self.title = title
         self.author = author
         self.pages = pages
 
-        def __repr__(self):
-            return f"{self.__dict__}"
-
-    def to_tuple(self):
-        return tuple(self.__dict__.values())
 
     def get_title(self):
         return self._title
