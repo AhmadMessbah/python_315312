@@ -1,7 +1,8 @@
 from model.entity.user import User
-from view.user_view import UserView
+from model.service.employee_service import UserService
+from datetime import date
 
+b_d = date(2000,11,10)
+user = User( 1, "alireza", "alipour", b_d, "ali", "ali12345", False)
 
-user = User()
-
-ui = UserView()
+UserService.edit(user)
