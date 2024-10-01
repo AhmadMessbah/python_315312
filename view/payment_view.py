@@ -56,7 +56,7 @@ class PaymentView:
     def __init__(self):
 
         win = Tk()
-        win.geometry("550x300")
+        win.geometry("650x400")
 
         Label(win, text="account").place(x=20, y=20)
         Label(win, text="amount").place(x=20, y=60)
