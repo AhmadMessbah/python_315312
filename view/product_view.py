@@ -5,9 +5,14 @@ import tkinter.messagebox as msg
 from controller.product_controller import ProductController
 
 class ProductView:
-    def clear_table(self):
-        for item in self.table.get_children():
-            self.table.delete(item)
+    def resat_form(self):
+        self.id.set(0)
+        self.name.set("")
+        self.brand.set("")
+        self.model.set("")
+        self.barcode.set(0)
+        self.buy_price.set(0)
+        self.sell_price.set(0)
 
     def show_on_table(self):
         for product in self.controller.find_all():
