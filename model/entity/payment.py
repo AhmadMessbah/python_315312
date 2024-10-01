@@ -1,22 +1,23 @@
 from datetime import datetime
 import re
 from model.tools.payment_validation import PaymentValidation
-
+from sqlalchemy import Column, Integer, String
 
 class Payment:
     # todo D Group: id, account, amount, date_time, person
+    __tablename__ = "payment_tbl"
+
+    _id = Column("id", Integer, primary_key=True, autoincrement=True)
+    _account_id = Column("account_id", Integer , primary_key=True, autoincrement=True)
+    _amount = Column("amount", Integer , primary_key=True, autoincrement=True)
+    _person = Column("person", String(20), nullable=False)
+
     def __init__(self, id, account_id, amount, person):
         self.person = person
         self.id = id
         self.account_id = account_id
         self.amount = amount
-        self.date_time = datetime.now()
-
-    def __repr__(self):
-        return f"{self.__dict__}"
-
-    def to_tuple(self):
-        return tuple(self.__dict__.values())
+        self.person = person
 
     @property
     def id(self):
