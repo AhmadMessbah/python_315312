@@ -31,7 +31,7 @@ class User:
 
     @name.setter
     def name(self, name):
-        self._name = Validation.name_validator(name, "Invliad Name")
+        self._name = Validation.name_validator(name, "Invlid Name")
 
     @property
     def family(self):
