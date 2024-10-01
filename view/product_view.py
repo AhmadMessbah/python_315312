@@ -6,15 +6,7 @@ from controller.product_controller import ProductController
 from view.component import LabelWithEntry, Table
 
 class ProductView:
-    def clear_table(self):
-        for item in self.table.get_children():
-            self.table.delete(item)
-
-    def show_on_table(self):
-        for product in self.controller.find_all():
-            self.table.insert("", END, values=product.to_tuple())
-
-    def reset_form(self):
+    def resat_form(self):
         self.id.set(0)
         self.name.set("")
         self.brand.set("")
@@ -22,31 +14,20 @@ class ProductView:
         self.barcode.set(0)
         self.buy_price.set(0)
         self.sell_price.set(0)
-        self.clear_table()
-        self.show_on_table()
 
-    def table_click(self, event):
-        item_id = self.table.focus()
-        item = self.table.item(item_id)
-        pro = item["values"]
-        self.id.set(pro[0])
-        self.name.set(pro[1])
-        self.brand.set(pro[2])
-        self.model.set(pro[3])
-        self.barcode.set(pro[4])
-        self.buy_price.set(pro[5])
-        self.sell_price.set(pro[6])
+
+    def table_click(self, selected_item):
+        print(selected_item)
 
     def save_click(self):
-        status, message = self.controller.save(
+        status, message =  ProductController.save(
             self.id.get(),
             self.name.get(),
             self.brand.get(),
             self.model.get(),
             self.barcode.get(),
             self.buy_price.get(),
-            self.sell_price.get()
-        )
+            self.sell_price.get())
         if status:
             msg.showinfo("Save", message)
             self.reset_form()
@@ -54,7 +35,7 @@ class ProductView:
             msg.showerror("Save Error", message)
 
     def edit_click(self):
-        status, message = self.controller.edit(
+        status, message = ProductController.edit(
             self.id.get(),
             self.name.get(),
             self.brand.get(),
@@ -71,7 +52,7 @@ class ProductView:
 
     def remove_click(self):
         if msg.askyesno("Remove product", "Are you sure?"):
-            status, message = self.controller.remove(self.id.get())
+            status, message = ProductController.remove(self.id.get())
             if status:
                 msg.showinfo("Remove", message)
                 self.reset_form()
@@ -141,6 +122,9 @@ class ProductView:
         self.reset_form()
 
         win.mainloop()
+
+    def reset_form(self):
+        pass
 
 
 ui = ProductView()
