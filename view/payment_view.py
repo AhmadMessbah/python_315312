@@ -56,7 +56,7 @@ class PaymentView:
     def __init__(self):
 
         win = Tk()
-        win.geometry("550x300")
+        win.geometry("650x400")
 
         Label(win, text="account").place(x=20, y=20)
         Label(win, text="amount").place(x=20, y=60)
@@ -93,10 +93,10 @@ class PaymentView:
 
         self.table.bind("<ButtonRelease-1>", self.table_focus)
 
-        Button(win, text="Save", command=self.save_record).place(x=100, y=180)
-        Button(win, text="Remove", command=self.remove_record).place(x=100, y=210)
-        Button(win, text="Edit", command=self.edit_record).place(x=100, y=240)
+        Button(win, text="Save", command=self.save_record).place(x=100, y=220)
+        Button(win, text="Remove", command=self.remove_record).place(x=100, y=250)
+        Button(win, text="Edit", command=self.edit_record).place(x=100, y=280)
 
         self.reset_form()
 
-        win.mainloop()  #
+        win.mainloop()
