@@ -1,8 +1,9 @@
-from model.repository.old.product_repository import ProductRepository
+from model.entity.product import Product
+from model.repository.crud_repository import CrudRepository
 
 
 class ProductService:
-    repo = ProductRepository()
+    repo = CroductRepository(Product)
 
     @classmethod
     def save(cls, product):

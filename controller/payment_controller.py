@@ -5,11 +5,11 @@ from model.service.payment_service import PaymentService
 class PaymentController:
 
     @classmethod
-    def save(cls, id, account_id, amount, person):
+    def save(cls, account_id, amount, person):
         # payment entity setter
         try:
             pay = Payment(None, account_id, amount, person)
-            PaymentService.save(pay, amount, person)
+            PaymentService.save(id, pay, amount, person)
             return True, "Info: Payment Saved!"
         except Exception as e:
             return False, str(e)
