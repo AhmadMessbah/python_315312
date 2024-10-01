@@ -52,7 +52,8 @@ class EmployeeView:
         self.family = LabelWithEntry(win, "Family", 20, 100)
         self.age = LabelWithEntry(win, "Age", 20, 140, data_type="int")
 
-        self.table = Table(win, ["Id", "Name", "Family", "Age"], [60, 100, 100, 60], x=250, y=20, self.table_click)
+        self.table = Table(win, ["Id", "Name", "Family", "Age"], [60, 100, 100, 60], 250, 20, self.table_click)
+        self.table.refresh_table(EmployeeController.find_all()[1])
 
         Button(win, text="Save", width=10, command=self.save_click).place(x=100, y=180)
         Button(win, text="Edit", width=10, command=self.edit_click).place(x=100, y=210)
