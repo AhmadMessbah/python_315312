@@ -1,6 +1,8 @@
 from tkinter import *
 import tkinter.ttk as ttk
-
+import tkinter.messagebox as msg
+from controller.payment_controller import PaymentController
+from view.component import LabelWithEntry, Table
 
 class PaymentView:
 
