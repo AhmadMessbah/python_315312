@@ -10,7 +10,9 @@ class EmployeeController:
     def save(cls, name, family, age):
         try:
             emp = Employee(None, name, family, age)
+            print("BEFORE ", emp)
             EmployeeService.save(emp)
+            print("AFTER ", emp)
             return True, "Employee Saved"
         except Exception as e:
             return False, str(e)
