@@ -1,7 +1,10 @@
 from model.entity.payment import Payment
+from model.repository.crud_repository import CrudRepository
+
 
 
 class PaymentService:
+    repo = CrudRepository(Payment)
 
     @classmethod
     def save(cls,id, account, amount, person):
