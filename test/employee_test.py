@@ -22,4 +22,4 @@ from model.entity.employee import Employee
 # print(em_repo.find_by_id(100))
 
 
-# print(EmployeeController.save("ali", "alipour", 20))
+print(EmployeeController.save("ali", "alipour", 20))
