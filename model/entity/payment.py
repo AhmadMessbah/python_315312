@@ -1,15 +1,13 @@
 from datetime import datetime
-import re
 from model.tools.payment_validation import PaymentValidation
 from sqlalchemy import Column, Integer, String
 
 class Payment:
-    # todo D Group: id, account, amount, date_time, person
     __tablename__ = "payment_tbl"
 
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
-    _account_id = Column("account_id", Integer , primary_key=True, autoincrement=True)
-    _amount = Column("amount", Integer , primary_key=True, autoincrement=True)
+    _account_id = Column("account_id", Integer , )
+    _amount = Column("amount", Integer , nullable=False)
     _person = Column("person", String(20), nullable=False)
 
     def __init__(self, id, account_id, amount, person):
