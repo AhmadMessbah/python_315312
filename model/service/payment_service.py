@@ -5,7 +5,7 @@ from model.entity.payment import Payment
 class PaymentService:
 
     @classmethod
-    def save(cls, account, amount, person):
+    def save(cls,id, account, amount, person):
         new_payment = Payment(id, account, amount, person)
         return cls.repo.save(new_payment)
 
