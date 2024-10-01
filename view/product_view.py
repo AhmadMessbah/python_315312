@@ -65,55 +65,14 @@ class ProductView:
         win = Tk()
         win.geometry("600x300")
 
-        Label(win, text="Id").place(x=20, y=20)
-        Label(win, text="Name").place(x=20, y=60)
-        Label(win, text="brand").place(x=20, y=100)
-        Label(win, text="model").place(x=20, y=140)
-        Label(win, text="barcode").place(x=20, y=180)
-        Label(win, text="buy_price").place(x=20, y=220)
-        Label(win, text="sell_price").place(x=20, y=260)
-
-
-        self.id = IntVar()
-        self.name = StringVar()
-        self.brand = StringVar()
-        self.model = StringVar()
-        self.barcode = IntVar()
+        self.id = LabelWithEntry(win, "Id", 20, 20, data_type="int", state="readonly")
+        self.name = LabelWithEntry(win, "Name", 20, 60)
+        self.brand = LabelWithEntry(win, "Brand", 20, 100)
+        self.model = LabelWithEntry(win, "Model", 20, 140, data_type="int")
+        self.barcode = LabelWithEntry(win, "Barcode", 20, 180, data_type="int")
         self.buy_price = IntVar()
         self.sell_price = IntVar()
 
-        Entry(win, textvariable=self.id, state="readonly").place(x=80, y=20)
-        Entry(win, textvariable=self.name).place(x=80, y=60)
-        Entry(win, textvariable=self.brand).place(x=80, y=100)
-        Entry(win, textvariable=self.model).place(x=80, y=140)
-        Entry(win, textvariable=self.barcode).place(x=80, y=140)
-        Entry(win, textvariable=self.buy_price).place(x=80, y=140)
-        Entry(win, textvariable=self.sell_price).place(x=80, y=140)
-
-
-        self.table = ttk.Treeview(win, columns=(1, 2, 3, 4), show="headings")
-        self.table.place(x=250, y=20)
-
-        self.table.heading(1, text="Id")
-        self.table.heading(2, text="Name")
-        self.table.heading(3, text="Brand")
-        self.table.heading(4, text="Model")
-        self.table.heading(1, text="Barcode")
-        self.table.heading(2, text="buy_price")
-        self.table.heading(3, text="sell_price")
-
-
-        self.table.column(1, width=60)
-        self.table.column(2, width=100)
-        self.table.column(3, width=100)
-        self.table.column(4, width=60)
-        self.table.column(1, width=60)
-        self.table.column(2, width=100)
-        self.table.column(3, width=100)
-
-
-        self.table.bind("<ButtonRelease-1>", self.table_click)
-        self.table.bind("<KeyRelease>", self.table_click)
 
         Button(win, text="Save", width=10, command=self.save_click).place(x=100, y=180)
         Button(win, text="Edit", width=10, command=self.edit_click).place(x=100, y=210)
