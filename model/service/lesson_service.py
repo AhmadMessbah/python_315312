@@ -3,30 +3,31 @@ from model.repository.crud_repository import CrudRepository
 
 
 class LessonService:
-    def __init__(self):
-        self.repo = CrudRepository(Lesson)
+    repo = CrudRepository(Lesson)
 
+    @classmethod
     def save(self, lesson):
         if lesson.start_time < lesson.end_time:
             self.repo.save(lesson)
         else:
             return "start time should be less than end time!!!"
 
+    @classmethod
     def edit(self, lesson):
         if lesson.start_time < lesson.end_time:
             self.repo.edit(lesson)
         else:
             return "start time should be less than end time!!! !!!"
 
-
+    @classmethod
     def remove(self, id):
         self.repo.remove(id)
 
-
+    @classmethod
     def find_all(self):
         return self.repo.find_all()
 
-
+    @classmethod
     def find_by_id(self, id):
         return self.repo.find_by_id(id)
 

@@ -13,6 +13,7 @@ class Payment:
     _person = Column("person", String(20), nullable=False)
 
     def __init__(self, id, account_id, amount, person):
+        self.person = person
         self.id = id
         self.account_id = account_id
         self.amount = amount
