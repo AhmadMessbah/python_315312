@@ -3,6 +3,7 @@ import tkinter.ttk as ttk
 import tkinter.messagebox as msg
 
 from controller.product_controller import ProductController
+from view.component import LabelWithEntry, Table
 
 class ProductView:
     def clear_table(self):
