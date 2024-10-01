@@ -6,9 +6,9 @@
 from controller.employee_controller import EmployeeController
 from model.entity.employee import Employee
 
-emp1 = Employee(2, "aaaa", "bbbb", 27)
-print(emp1)
-print(emp1.to_tuple())
+# emp1 = Employee(2, "aaaa", "bbbb", 27)
+# print(emp1)
+# print(emp1.to_tuple())
 #
 # emp_service = EmployeeService()
 # emp_service.save(emp1)

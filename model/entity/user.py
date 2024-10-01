@@ -1,7 +1,22 @@
+from sqlalchemy.sql.sqltypes import BOOLEANTYPE
+
+from model.entity.base import Base
+from sqlalchemy import Column, Integer, String, Date, Boolean
 from model.tools.user_validation import Validation
 
+class User(Base):
+    __tablename__ = "user_tbl"
 
-class User:
+
+    _id = Column("id", Integer , primary_key=True, autoincrement=True)
+    _name = Column("name", String(30), nullable=False)
+    _family = Column("family", String(30), nullable=False)
+    _birth_date = Column("birth_date",Date)
+    _username = Column("username", String(20), nullable=False)
+    _password = Column("password", String(15), nullable=False)
+    _is_active = Column("is_active", Boolean, default=True)
+
+
     def __init__(self, id, name, family, birth_date, username, password, is_active):
         self.id = id
         self.name = name
@@ -11,11 +26,6 @@ class User:
         self.password = password
         self.is_active = is_active
 
-    def __repr__(self):
-        return f"{self.__dict__}"
-
-    def to_tuple(self):
-        return tuple(self.__dict__.values())
 
     @property
     def id(self):
