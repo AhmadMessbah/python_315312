@@ -1,23 +1,17 @@
-from model.entity.employee import Employee
+from model.entity.user import User
 from model.repository.crud_repository import CrudRepository
 
 
-class EmployeeService:
-    repo = CrudRepository(Employee)
+class UserService:
+    repo = CrudRepository(User)
 
     @classmethod
-    def save(cls, employee):
-        if 20 <= employee.age <= 30:
-            cls.repo.save(employee)
-        else:
-            return ValueError("Age is not valid !!!")
+    def save(cls, user):
+        cls.repo.save(user)
 
     @classmethod
-    def edit(cls, employee):
-        if 20 <= employee.age <= 30:
-            cls.repo.edit(employee)
-        else:
-            return ValueError("Age is not valid !!!")
+    def edit(cls, user):
+        cls.repo.edit(user)
 
     @classmethod
     def remove(cls, id):
@@ -30,7 +24,6 @@ class EmployeeService:
     @classmethod
     def find_by_id(cls, id):
         return cls.repo.find_by_id(id)
-
 
     @classmethod
     def find_by(cls, by):
