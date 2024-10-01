@@ -6,6 +6,7 @@ from model.tools.payment_validation import PaymentValidation
 class Payment:
     # todo D Group: id, account, amount, date_time, person
     def __init__(self, id, account_id, amount, person):
+        self.person = person
         self.id = id
         self.account_id = account_id
         self.amount = amount
