@@ -12,8 +12,8 @@ class PaymentService:
     @classmethod
     def edit(cls, id, amount, date_time, person):
         try:
-            payment = repo.find_by_id(id)
-            repo.edit(payment)
+            payment = cls.repo.find_by_id(id)
+            cls.repo.edit(payment)
             return f"Payment with ID {id} updated."
         except:
             return f"Payment with ID {id} not found."
@@ -21,7 +21,7 @@ class PaymentService:
     @classmethod
     def remove(cls, id):
         try:
-            repo.remove(id)
+            cls.repo.remove(id)
             return f"Payment with ID {id} removed"
         except:
             return f"Payment with ID {id} not found"
@@ -29,11 +29,15 @@ class PaymentService:
     @classmethod
     def find_all(cls):
         try:
-            payments = repo.find_all()
+            payments = cls.repo.find_all()
             return payments
         except:
             return "Payments not found !!!"
 
     @classmethod
     def find_by_id(cls, id):
-        return repo.find_by_id(id)
+        try:
+            cls.repo.find_by_id(id)
+            return f"Payment with ID {id} found."
+        except:
+            return f"Payment with ID {id} not found"
