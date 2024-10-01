@@ -25,7 +25,7 @@ class LabelWithEntry:
 
 
 class Table:
-    def __init__(self, master, headers, widths, x, y, select_function):
+    def __init__(self, master, headers, widths, x, y, select_function=None):
         self.master = master
         self.x = x
         self.y = y
@@ -39,8 +39,9 @@ class Table:
             self.table.column(col, width=self.widths[col])
             self.table.heading(col, text=self.headers[col])
 
-        self.table.bind("<ButtonRelease>", self.select_table)
-        self.table.bind("<KeyRelease>", self.select_table)
+        if select_function:
+            self.table.bind("<ButtonRelease>", self.select_table)
+            self.table.bind("<KeyRelease>", self.select_table)
         self.table.place(x=x, y=y)
 
     def refresh_table(self, data_list):
@@ -49,7 +50,7 @@ class Table:
 
         if data_list:
             for data in data_list:
-                self.table.insert("", END, values=tuple(data.__dict__.values()))
+                self.table.insert("", END, values=data.to_tuple())
 
     def select_table(self, event):
         data = self.table.item(self.table.focus())["values"]

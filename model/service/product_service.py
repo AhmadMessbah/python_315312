@@ -1,8 +1,9 @@
-from model.repository.old.product_repository import ProductRepository
+from model.entity.product import Product
+from model.repository.crud_repository import CrudRepository
 
 
 class ProductService:
-    repo = ProductRepository()
+    repo = CrudRepository(Product)
 
     @classmethod
     def save(cls, product):
@@ -32,3 +33,7 @@ class ProductService:
     @classmethod
     def find_by_id(cls, _id):
         return cls.repo.find_by_id(_id)
+
+    @classmethod
+    def find_by(cls, by):
+        return cls.repo.find_by(by)

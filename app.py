@@ -1,4 +1,4 @@
-from view.employee_view import EmployeeView
+from view.payment_view import PaymentView
 
 
-ui = EmployeeView()
+ui = PaymentView()
