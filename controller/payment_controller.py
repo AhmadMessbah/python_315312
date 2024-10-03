@@ -9,7 +9,7 @@ class PaymentController:
         # payment entity setter
         try:
             pay = Payment(None, account_id, amount, person)
-            PaymentService.save(id, pay, amount, person)
+            PaymentService.save(pay)
             return True, "Info: Payment Saved!"
         except Exception as e:
             return False, str(e)
@@ -18,7 +18,7 @@ class PaymentController:
     def edit(cls, id, account_id, amount, person):
         try:
             pay = Payment(id, account_id, amount, person)
-            PaymentService.edit(pay, account_id, amount, person)
+            PaymentService.edit(pay)
             return True, "Payment Has Been Edited!"
         except Exception as e:
             return False, str(e)

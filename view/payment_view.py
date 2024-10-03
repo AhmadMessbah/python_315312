@@ -49,11 +49,11 @@ class PaymentView:
         win = Tk()
         win.geometry("650x400")
 
-        self.id = LabelWithEntry(win, text="Id", x=20, y=100, data_type="int", state= "readonly")
-        self.account = LabelWithEntry(win, text="Account", x=20, y=20, data_type= "str")
-        self.amount = LabelWithEntry(win, text="Amount", x=20, y=60, data_type= "int")
-        self.date = LabelWithEntry(win, text="Date", x=20, y=140, data_type= "datetime", state= "readonly")
-        self.person = LabelWithEntry(win, text="Person", x=20, y=180, data_type= "str")
+        self.id = LabelWithEntry(win, "Id", 20, 100, data_type="int", state= "readonly")
+        self.account = LabelWithEntry(win, "Account", 20, 20, data_type= "str")
+        self.amount = LabelWithEntry(win, "Amount", 20, 60, data_type= "int")
+        self.date = LabelWithEntry(win, "Date", 20, 140, data_type= "datetime", state= "readonly")
+        self.person = LabelWithEntry(win, "Person", 20, 180, data_type= "str")
 
         self.table = Table(win, ["Id", "Account", "Amount", "Date", "Person"],[60, 100, 100, 60, 60], 250, 20, self.table_click)
         self.table.refresh_table(PaymentController.find_all()[1])
