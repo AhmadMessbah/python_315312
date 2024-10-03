@@ -21,16 +21,19 @@ class PaymentView:
     def save_record(self):
         status, message = PaymentController.save(self.account.get(), self.amount.get(), self.person.get())
         if status:
-            msg.showinfo("Saved", message)
+            msg.showinfo("Saved.", message)
             self.reset_form()
         else:
             msg.showerror("Save Error!", message)
 
     def remove_record(self):
-        selected = self.table.focus()
-        if selected:
-            self.table.delete(selected)
-            self.reset_form()
+        if msg.askyesno("Remove Payment!", "Are you sure?"):
+            status, message = PaymentController.remove(self.id.get())
+            if status:
+                msg.showinfo("Removed.", message)
+                self.reset_form()
+            else:
+                msg.showerror("Remove Error!", message)
 
     def edit_record(self):
         selected = self.table.focus()
