@@ -14,6 +14,10 @@ class PaymentView:
         self.date.set("")
         self.person.set("")
 
+    @staticmethod
+    def table_click(selected_item):
+        print(selected_item)
+
     def save_record(self):
         status, message = PaymentController.save(self.account.get(), self.amount.get(), self.person.get())
         if status:
@@ -21,16 +25,6 @@ class PaymentView:
             self.reset_form()
         else:
             msg.showerror("Save Error!", message)
-
-    def table_focus(self, event):
-        selected = self.table.focus()
-        values = self.table.item(selected, 'values')
-        if values:
-            self.id.set(values[0])
-            self.account.set(values[1])
-            self.amount.set(values[2])
-            self.person.set(values[3])
-            self.date.set(values[4])
 
     def remove_record(self):
         selected = self.table.focus()
