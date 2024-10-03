@@ -5,39 +5,29 @@ class PaymentService:
     repo = CrudRepository(Payment)
 
     @classmethod
-    def save(cls,id, account, amount, person):
-        new_payment = Payment(id, account, amount, person)
-        return cls.repo.save(new_payment)
+    def save(cls,payment):
+        cls.repo.save(payment)
+        return payment
 
     @classmethod
-    def edit(cls, id, amount, date_time, person):
-        try:
-            payment = cls.repo.find_by_id(id)
-            cls.repo.edit(payment)
-            return f"Payment with ID {id} updated."
-        except:
-            return f"Payment with ID {id} not found."
+    def edit(cls, payment):
+        cls.repo.edit(payment)
+        return payment
+
 
     @classmethod
     def remove(cls, id):
-        try:
-            cls.repo.remove(id)
-            return f"Payment with ID {id} removed"
-        except:
-            return f"Payment with ID {id} not found"
-
+        cls.repo.remove(id)
+        return id
+    
     @classmethod
     def find_all(cls):
-        try:
-            payments = cls.repo.find_all()
-            return payments
-        except:
-            return "Payments not found !!!"
+        return cls.repo.find_all()
 
     @classmethod
     def find_by_id(cls, id):
-        try:
-            cls.repo.find_by_id(id)
-            return f"Payment with ID {id} found."
-        except:
-            return f"Payment with ID {id} not found"
+        return cls.repo.find_by_id(id)
+
+    @classmethod
+    def find_by(cls, by):
+        return cls.repo.find_by(by)

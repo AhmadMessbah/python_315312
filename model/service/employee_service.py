@@ -1,17 +1,17 @@
-from model.entity.user import User
+from model.entity.employee import Employee
 from model.repository.crud_repository import CrudRepository
 
 
-class UserService:
-    repo = CrudRepository(User)
+class EmployeeService:
+    repo = CrudRepository(Employee)
 
     @classmethod
-    def save(cls, user):
-        cls.repo.save(user)
+    def save(cls, employee):
+        cls.repo.save(employee)
 
     @classmethod
-    def edit(cls, user):
-        cls.repo.edit(user)
+    def edit(cls, employee):
+        cls.repo.edit(employee)
 
     @classmethod
     def remove(cls, id):

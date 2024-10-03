@@ -8,7 +8,7 @@ connection_string = "mysql+pymysql://root:root123@localhost:3306/mft"
 if not database_exists(connection_string):
     create_database(connection_string)
 
-engine = create_engine(connection_string)
+engine = create_engine(connection_string,echo=True)
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)
@@ -27,6 +27,7 @@ class CrudRepository:
     
     def save(self, entity):
         session.add(entity)
+        print("AF ", entity)
         session.commit()
         session.refresh(entity)
         return entity

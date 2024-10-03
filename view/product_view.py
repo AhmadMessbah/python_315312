@@ -6,8 +6,7 @@ from controller.product_controller import ProductController
 from view.component import LabelWithEntry, Table
 
 class ProductView:
-
-    def reset_form(self):
+    def resat_form(self):
         self.id.set(0)
         self.name.set("")
         self.brand.set("")
@@ -16,20 +15,19 @@ class ProductView:
         self.buy_price.set(0)
         self.sell_price.set(0)
 
-    def table_click(self, event):
-        item_id = self.table.focus()
-        item = self.table.item(item_id)
-        pro = item["values"]
-        self.id.set(pro[0])
-        self.name.set(pro[1])
-        self.brand.set(pro[2])
-        self.model.set(pro[3])
-        self.barcode.set(pro[4])
-        self.buy_price.set(pro[5])
-        self.sell_price.set(pro[6])
+
+    def table_click(self, selected_item):
+        print(selected_item)
 
     def save_click(self):
-        status, message =
+        status, message =  ProductController.save(
+            self.id.get(),
+            self.name.get(),
+            self.brand.get(),
+            self.model.get(),
+            self.barcode.get(),
+            self.buy_price.get(),
+            self.sell_price.get())
         if status:
             msg.showinfo("Save", message)
             self.reset_form()
@@ -37,7 +35,7 @@ class ProductView:
             msg.showerror("Save Error", message)
 
     def edit_click(self):
-        status, message = self.controller.edit(
+        status, message = ProductController.edit(
             self.id.get(),
             self.name.get(),
             self.brand.get(),
@@ -54,7 +52,7 @@ class ProductView:
 
     def remove_click(self):
         if msg.askyesno("Remove product", "Are you sure?"):
-            status, message = self.controller.remove(self.id.get())
+            status, message = ProductController.remove(self.id.get())
             if status:
                 msg.showinfo("Remove", message)
                 self.reset_form()
@@ -62,6 +60,7 @@ class ProductView:
                 msg.showerror("Remove Error", message)
 
     def __init__(self):
+        self.controller = ProductController()
 
         win = Tk()
         win.geometry("600x300")
@@ -70,9 +69,9 @@ class ProductView:
         self.name = LabelWithEntry(win, "Name", 20, 60)
         self.brand = LabelWithEntry(win, "Brand", 20, 100)
         self.model = LabelWithEntry(win, "Model", 20, 140, data_type="int")
-        self.barcode = LabelWithEntry(win, "barcode", 20, 180, data_type="int")
-        self.buy_price = LabelWithEntry(win, "buy_price", 20, 220, data_type="int")
-        self.sell_price = LabelWithEntry(win, "sell_price", 20, 260, data_type="int")
+        self.barcode = LabelWithEntry(win, "Barcode", 20, 180, data_type="int")
+        self.buy_price = IntVar()
+        self.sell_price = IntVar()
 
 
         Button(win, text="Save", width=10, command=self.save_click).place(x=100, y=180)
@@ -82,6 +81,9 @@ class ProductView:
         self.reset_form()
 
         win.mainloop()
+
+    def reset_form(self):
+        pass
 
 
 ui = ProductView()

@@ -1,16 +1,14 @@
 from datetime import datetime
-import re
 from model.tools.payment_validation import PaymentValidation
 from sqlalchemy import Column, Integer, String
 
 class Payment:
-    # todo D Group: id, account, amount, date_time, person
     __tablename__ = "payment_tbl"
 
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
-    _account_id = Column("account_id", Integer , primary_key=True, autoincrement=True)
-    _amount = Column("amount", Integer , primary_key=True, autoincrement=True)
-    _person = Column("person", String(20), nullable=False)
+    _account_id = Column("account_id", Integer )
+    _amount = Column("amount", Integer )
+    _person = Column("person", String(30))
 
     def __init__(self, id, account_id, amount, person):
         self.person = person
@@ -51,4 +49,4 @@ class Payment:
     def person(self, person):
         self._person = PaymentValidation.person_validator(person, "Invalid Person")
 
-# if isinstance(date_time, datetime) else datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
+
