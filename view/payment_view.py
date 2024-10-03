@@ -36,22 +36,15 @@ class PaymentView:
                 msg.showerror("Remove Error!", message)
 
     def edit_record(self):
-        selected = self.table.focus()
-        if selected:
-            self.table.delete(selected)
+        status, message = PaymentController.edit(self.id.get(), self.account.get(), self.amount.get(), self.person.get())
+        if status:
+            msg.showinfo("Edited.", message)
+            self.reset_form()
+        else:
+            msg.showerror("Edit Error!", message)
 
-            id_value = self.id.get()
-            account_value = self.account.get()
-            amount_value = self.amount.get()
-            date_value = self.date.get()
-            person_value = self.person.get()
-
-            if id_value and account_value:
-                self.table.insert('', 'end', values=(id_value, account_value, amount_value, person_value, date_value))
-                self.reset_form()
 
     def __init__(self):
-
         win = Tk()
         win.geometry("650x400")
 
