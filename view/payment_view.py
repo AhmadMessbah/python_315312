@@ -1,28 +1,26 @@
 from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.messagebox as msg
+
 from controller.payment_controller import PaymentController
 from view.component import LabelWithEntry, Table
 
 class PaymentView:
 
     def reset_form(self):
+        self.id.set(0)
         self.account.set("")
         self.amount.set(0)
-        self.id.set(0)
         self.date.set("")
         self.person.set("")
 
     def save_record(self):
-        id_value = self.id.get()
-        account_value = self.account.get()
-        amount_value = self.amount.get()
-        date_value = self.date.get()
-        person_value = self.person.get()
-
-        if id_value and account_value:
-            self.table.insert('', END, values=(id_value, account_value, amount_value, person_value, date_value))
+        status, message = PaymentController.save(self.account.get(), self.amount.get(), self.person.get())
+        if status:
+            msg.showinfo("Saved", message)
             self.reset_form()
+        else:
+            msg.showerror("Save Error!", message)
 
     def table_focus(self, event):
         selected = self.table.focus()
