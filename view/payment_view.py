@@ -1,3 +1,4 @@
+from datetime import datetime
 from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.messagebox as msg
@@ -48,40 +49,18 @@ class PaymentView:
         win = Tk()
         win.geometry("650x400")
 
-        Label(win, text="account").place(x=20, y=20)
-        Label(win, text="amount").place(x=20, y=60)
-        Label(win, text="id").place(x=20, y=100)
-        Label(win, text="date").place(x=20, y=140)
-        Label(win, text="person").place(x=20, y=180)
+        self.id = LabelWithEntry(win, text="Id", x=20, y=100, data_type="int", state= "readonly")
+        self.account = LabelWithEntry(win, text="Account", x=20, y=20, data_type= "str")
+        self.amount = LabelWithEntry(win, text="Amount", x=20, y=60, data_type= "int")
+        self.date = LabelWithEntry(win, text="Date", x=20, y=140, data_type= "datetime", state= "readonly")
+        self.person = LabelWithEntry(win, text="Person", x=20, y=180, data_type= "str")
 
-        self.account = StringVar()
-        self.amount = IntVar()
-        self.id = IntVar()
-        self.date = StringVar()
-        self.person = StringVar()
-
-        Entry(win, textvariable=self.account).place(x=80, y=20)
-        Entry(win, textvariable=self.amount).place(x=80, y=60)
-        Entry(win, textvariable=self.id).place(x=80, y=100)
-        Entry(win, textvariable=self.date).place(x=80, y=140)
-        Entry(win, textvariable=self.person).place(x=80, y=180)
+        self.table = Table(win, ["Id", "Account", "Amount", "Date", "Person"],[60, 100, 100, 60, 60], 250, 20, self.table_click)
+        self.table.refresh_table(PaymentController.find_all()[1])
 
         self.table = ttk.Treeview(win, columns=(1, 2, 3, 4, 5), show="headings")
         self.table.place(x=250, y=20)
 
-        self.table.heading(1, text="Id")
-        self.table.heading(2, text="account")
-        self.table.heading(3, text="amount")
-        self.table.heading(4, text="person")
-        self.table.heading(5, text="dete")
-
-        self.table.column(1, width=60)
-        self.table.column(2, width=100)
-        self.table.column(3, width=100)
-        self.table.column(4, width=60)
-        self.table.column(5, width=60)
-
-        self.table.bind("<ButtonRelease-1>", self.table_focus)
 
         Button(win, text="Save", command=self.save_record).place(x=100, y=220)
         Button(win, text="Remove", command=self.remove_record).place(x=100, y=250)
