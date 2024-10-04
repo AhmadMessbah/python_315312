@@ -13,5 +13,8 @@ user_service.save(user1)
 UserService.edit(user1)
 UserService.delete()
 
+print(user_service.find_by_id(1))
+print(user_service.find_all())
+
 
 print(User.Controller.save(2,"reza","rezapour",b_d ,"reza","reza12345", True))
