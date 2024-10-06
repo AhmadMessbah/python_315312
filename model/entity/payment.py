@@ -1,14 +1,16 @@
 from datetime import datetime
+from sqlalchemy import Column, Integer, Float, String, DateTime
+from model.entity.base import Base
 from model.tools.payment_validation import PaymentValidation
-from sqlalchemy import Column, Integer, String
 
 class Payment:
     __tablename__ = "payment_tbl"
 
     _id = Column("id", Integer, primary_key=True, autoincrement=True)
-    _account_id = Column("account_id", Integer )
-    _amount = Column("amount", Integer )
-    _person = Column("person", String(30))
+    _account_id = Column("account_id", Integer, nullable=False)
+    _amount = Column("amount", Float, nullable=False)
+    _date_time = Column("date_time", DateTime, default=datetime.now)
+    _person = Column("person", String(30), nullable=False)
 
     def __init__(self, id, account_id, amount, person):
         self.person = person
@@ -16,6 +18,7 @@ class Payment:
         self.account_id = account_id
         self.amount = amount
         self.person = person
+        self.date_time = datetime.now()
 
     @property
     def id(self):
