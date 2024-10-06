@@ -80,7 +80,7 @@ class LessonView:
         tkinter.Label(self.window, text="end_time").place(x=20, y=210)
         tkinter.Entry(self.window).place(x=80, y=210)
 
-        self.table = Table(window, ["Id", "Name", "Family", "Age"], [60, 100, 100, 60], x=250, y=20)
+        self.table = Table(self.window, ["Id", "title", "week_day", "start_date"], [60, 100, 100, 60], x=250, y=20)
         self.table.refresh_table(LessonController.find_all()[1])
 
         save_btn = tkinter.Button(self.window,
