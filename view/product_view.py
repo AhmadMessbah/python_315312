@@ -1,12 +1,12 @@
-from tkinter import *
-import tkinter.ttk as ttk
 import tkinter.messagebox as msg
+from tkinter import *
 
 from controller.product_controller import *
-from view.component import LabelWithEntry, Table
+from view.component import LabelWithEntry
+
 
 class ProductView:
-    def resat_form(self):
+    def reset_form(self):
         self.id.set(0)
         self.name.set("")
         self.brand.set("")
@@ -27,7 +27,8 @@ class ProductView:
             self.model.get(),
             self.barcode.get(),
             self.buy_price.get(),
-            self.sell_price.get())
+            self.sell_price.get()
+        )
         if status:
             msg.showinfo("Save", message)
             self.reset_form()
@@ -81,9 +82,6 @@ class ProductView:
         self.reset_form()
 
         win.mainloop()
-
-    def reset_form(self):
-        pass
 
 
 ui = ProductView()

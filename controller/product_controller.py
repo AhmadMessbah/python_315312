@@ -17,7 +17,7 @@ class ProductController:
     def edit(cls, id, name, brand, model, barcode, buy_price, sell_price):
         try:
             product = Product(id, name, brand, model, barcode, buy_price, sell_price)
-            error = ProductService.edit(product)
+            ProductService.edit(product)
             return True ,"Product Edited"
         except Exception as e:
             return False, str(e)

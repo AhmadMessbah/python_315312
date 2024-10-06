@@ -16,11 +16,14 @@ class Product(Base):
     _buy_price = Column("buy_price", Integer, default = 0)
     _sell_price = Column("sell_price", Integer, default = 0)
 
-    def __init__(self, id, name, family, age):
+    def __init__(self, id, name, brand, model, barcode, buy_price, sell_price):
         self.id = id
         self.name = name
-        self.family = family
-        self.age = age
+        self.brand = brand
+        self.model = model
+        self.barcode = barcode
+        self.buy_price = buy_price
+        self.sell_price = sell_price
 
     @property
     def id(self):
@@ -43,15 +46,15 @@ class Product(Base):
         return self._brand
 
     @brand.setter
-    def family(self, brand):
-        self._brand = Validation.brand_validator(brand, "Invalid Family")
+    def brand(self, brand):
+        self._brand = Validation.brand_validator(brand, "Invalid Brand")
 
     @property
     def model(self):
         return self._model
 
     @model.setter
-    def age(self,model):
+    def model(self,model):
         self._model = Validation.brand_validator(model, "Invalid Model")
 
     @property
