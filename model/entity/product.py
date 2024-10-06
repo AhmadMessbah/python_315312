@@ -1,12 +1,19 @@
-# python cant find it(error > no module named product validator)
-#from pefile import PrologEpilogOpSetFP
+from sqlalchemy import Column, Integer, String, Boolean
 
-# from model.entity.product_validation import *
-from model.tools.product_validation import ProductValidation
-from product_validation import *
+from model.entity.product_validation import *
+from model.entity.base import Base
+
+class Product(Base):
+    __tablename__ = "product_tbl"
+
+    _id = Column("id", Integer, primary_key=True, autoincrement=True)
+    _name = Column("name",String(20), nullable=False)
+    _brand = Column("brand", String(20), nullable=False)
+    _barcode = Column("pages", String(20), nullable=False)
+    _buy_price = Column("buy_price", Integer, default = 0)
+    _sell_price = Column("sell_price" ,Integer, default = 0)
 
 
-class Product:
     def __init__(self, id, name, brand, model,barcode,buy_price,sell_price):
         self.id = id
         self.name = name
