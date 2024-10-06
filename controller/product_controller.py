@@ -1,5 +1,5 @@
 import re
-from model.entity.product import Product
+from model.entity.product import *
 from model.service.product_service import ProductService
 # ʕ •ᴥ•ʔ
 class ProductController:

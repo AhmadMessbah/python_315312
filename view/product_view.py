@@ -2,7 +2,7 @@ from tkinter import *
 import tkinter.ttk as ttk
 import tkinter.messagebox as msg
 
-from controller.product_controller import ProductController
+from controller.product_controller import *
 from view.component import LabelWithEntry, Table
 
 class ProductView:
