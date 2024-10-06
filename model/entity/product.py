@@ -1,68 +1,50 @@
-import re
+# python cant find it(error > no module named product validator)
+#from pefile import PrologEpilogOpSetFP
 
-from sqlalchemy import Column, Integer, String, Boolean
-
-from model.entity.book_validation import *
-from model.entity.base import Base
-from model.entity.product_validation import no_numbers, string_validator
-
-
-class Product(Base):
-    __tablename__ = 'product'
-
-    _id = Column(Integer, primary_key=True, autoincrement=True)
-    _name = Column(String, nullable=False)
-    _brand = Column(String, nullable=False)
-    _model = Column(String, nullable=False)
-    _barcode = Column(String, nullable=False)
-    _buy_price = Column(Integer, nullable=False)
-    _sell_price = Column(Integer, nullable=False)
+# from model.entity.product_validation import *
+from model.tools.product_validation import ProductValidation
+from product_validation import *
 
 
-    def __init__(self,id, name, brand, model, barcode, buy_price, sell_price):
-        self._id = id
-        self._name = name
-        self._brand = brand
-        self._model = model
-        self._barcode = barcode
-        self._buy_price = buy_price
-        self._sell_price = sell_price
+class Product:
+    def __init__(self, id, name, brand, model,barcode,buy_price,sell_price):
+        self.id = id
+        self.name = name
+        self.brand = brand
+        self.model = model
+        self.barcode = barcode
+        self.buy_price = buy_price
+        self.sell_price = sell_price
 
     def get_name(self):
-        return self._name
-
+        return self.name
     def set_name(self, name):
-        self._name = no_numbers(name)
+        self.name = no_numbers(name)
 
     def get_brand(self):
-        return self._brand
-
+        return self.brand
     def set_brand(self, brand):
-        self._brand = no_numbers(brand)
+        self.brand = no_numbers(brand)
 
     def get_model(self):
-        return self._model
-
+        return self.model
     def set_model(self, model):
-        self._model = string_validator(model)
+        self.model = string_validator(model)
 
     def get_barcode(self):
-        return self._barcode
-
+        return self.barcode
     def set_barcode(self, barcode):
-        self._barcode = string_validator(barcode)
+        self.barcode = string_validator(barcode)
 
     def get_buy_price(self):
-        return self._buy_price
-
+        return self.buy_price
     def set_buy_price(self, buy_price):
-        self._buy_price = positive_int(buy_price)
+        self.buy_price = positive_int(buy_price)
 
     def get_sell_price(self):
-        return self._sell_price
-
+        return self.sell_price
     def set_sell_price(self, sell_price):
-        self._sell_price = positive_int(sell_price)
+        self.sell_price = positive_int(sell_price)
 
     name = property(get_name, set_name)
     brand = property(get_brand, set_brand)
