@@ -64,7 +64,7 @@ class LessonView:
 
         self.id = LabelWithEntry(self.window, "Id", 20, 20, data_type="int", state="readonly")
         self.title = LabelWithEntry(self.window, "title", 20, 60)
-        self.week_day = LabelWithEntry(self.window, "week day", 20, 100)
+        self.week_day = LabelWithEntry(self.window, "week day", 20, 60)
         self.start_time= LabelWithEntry(self.window, "start time", 20, 140, data_type="int")
         self.start_date= LabelWithEntry(self.window,"Start Date", 20, 180, data_type="int")
         self.end_time= LabelWithEntry(self.window, "End Date", 20, 200, data_type="int")
