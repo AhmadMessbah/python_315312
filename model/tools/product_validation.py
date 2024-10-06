@@ -1,6 +1,6 @@
 import re
 
-class ProductValidation:
+class Validation:
     @staticmethod
     def id_validator(id,message):
         if type(id) == int and re.match(r"^[1-9]{7}$", id):

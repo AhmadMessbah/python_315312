@@ -1,7 +1,7 @@
 from email.policy import default
 
 from model.entity.base import Base
-from model.tools.validation import Validation
+from model.tools.product_validation import Validation
 from sqlalchemy import Column, Integer, String
 
 
@@ -44,7 +44,7 @@ class Product(Base):
 
     @brand.setter
     def family(self, brand):
-        self._brand = Validation.family_validator(brand, "Invalid Family")
+        self._brand = Validation.brand_validator(brand, "Invalid Family")
 
     @property
     def model(self):
@@ -52,7 +52,7 @@ class Product(Base):
 
     @model.setter
     def age(self,model):
-        self._model = model
+        self._model = Validation.brand_validator(model, "Invalid Model")
 
     @property
     def barcode(self):
@@ -60,7 +60,7 @@ class Product(Base):
 
     @barcode.setter
     def barcode(self, barcode):
-        self._barcode = barcode
+        self._barcode = Validation.brand_validator(barcode, "Invalid Barcode")
 
     @property
     def buy_price(self):
@@ -68,7 +68,7 @@ class Product(Base):
 
     @buy_price.setter
     def buy_price(self, buy_price):
-        self._buy_price = buy_price
+        self._buy_price = Validation.buy_sell_validator(buy_price, "Invalid Buy Price")
 
     @property
     def sell_price(self):
@@ -76,4 +76,4 @@ class Product(Base):
 
     @sell_price.setter
     def sell_price(self, sell_price):
-        self._sell_price = sell_price
+        self._sell_price = Validation.buy_sell_validator(sell_price, "Invalid Sell Price")
