@@ -6,7 +6,7 @@ from controller.product_controller import *
 from view.component import LabelWithEntry, Table
 
 class ProductView:
-    def resat_form(self):
+    def reset_form(self):
         self.id.set(0)
         self.name.set("")
         self.brand.set("")
@@ -81,9 +81,6 @@ class ProductView:
         self.reset_form()
 
         win.mainloop()
-
-    def reset_form(self):
-        pass
 
 
 ui = ProductView()
