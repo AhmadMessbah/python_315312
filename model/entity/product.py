@@ -1,12 +1,19 @@
-# python cant find it(error > no module named product validator)
-from pefile import PrologEpilogOpSetFP
-
-# from model.entity.product_validation import *
+from model.entity.base import Base
 from model.tools.product_validation import ProductValidation
+from sqlalchemy import Column, Integer, String
 
 
+class Product(Base):
+    __tablename__ = "product_tbl"
 
-class Product:
+    id = Column("id",Integer, primary_key=True, autoincrement=True)
+    name = Column("name", String(30), nullable=False)
+    brand = Column("brand", String(30), nullable=False)
+    model = Column("model", String(30), nullable=False)
+    barcode = Column("barcode", String(10), nullable=False)
+    buy_price = Column("buy_price", Integer, nullable=False)
+    sell_price = Column("sell_price", Integer, nullable=False)
+
     def __init__(self, id, name, brand, model,barcode,buy_price,sell_price):
         self.id = id
         self.name = name
@@ -16,67 +23,63 @@ class Product:
         self.buy_price = buy_price
         self.sell_price = sell_price
 
-    def __repr__(self):
-        return f"{self.__dict__}"
 
-    def to_tuple(self):
-        return tuple(self.__dict__.values())
 
     @property
     def id(self):
-        return self.id
+        return self._id
 
     @id.setter
     def id(self, id):
-        self.id = ProductValidation.id_validator(id, "Invalid id")
+        self._id = ProductValidation.id_validator(id, "Invalid id")
 
     @property
     def name(self):
-        return self.name
+        return self._name
 
     @name.setter
     def name(self, name):
-        self.name = ProductValidation.name_validator(name, "Invalid Name")
+        self._name = ProductValidation.name_validator(name, "Invalid Name")
 
     @property
     def brand(self):
-        return self.brand
+        return self._brand
 
     @brand.setter
     def brand(self, brand):
-        self.brand = ProductValidation.brand_validator(brand, "Invalid brand")
+        self._brand = ProductValidation.brand_validator(brand, "Invalid brand")
 
     @property
     def model(self):
-        return self.model
+        return self._model
 
     @model.setter
     def model(self, model):
-        self.brand = ProductValidation.model_validator(model, "Invalid model")
+        self._brand = ProductValidation.model_validator(model, "Invalid model")
 
     @property
     def barcode(self):
-        return self.barcode
+        return self._barcode
 
     @barcode.setter
     def barcode(self, barcode):
-        self.barcode = ProductValidation.barcode_validator(barcode, "Invalid barcode")
+        self._barcode = ProductValidation.barcode_validator(barcode, "Invalid barcode")
 
     @property
     def buy_price(self):
-        return self.buy_price
+        return self._buy_price
 
     @buy_price.setter
     def buy_price(self, buy_price):
-        self.buy_price = ProductValidation.buy_sell_validator(buy_price, "Invalid buy price")
+        self._buy_price = ProductValidation.buy_sell_validator(buy_price, "Invalid buy price")
 
     @property
     def sell_price(self):
-        return self.sell_price
+        return self._sell_price
 
     @sell_price.setter
     def sell_price(self, sell_price):
-        self.sell_price = ProductValidation.buy_sell_validator(sell_price, "Invalid sell price")
+        self._sell_price = ProductValidation.buy_sell_validator(sell_price, "Invalid sell price")
 
 
 # test
