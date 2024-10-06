@@ -1,5 +1,5 @@
 # python cant find it(error > no module named product validator)
-from pefile import PrologEpilogOpSetFP
+#from pefile import PrologEpilogOpSetFP
 
 # from model.entity.product_validation import *
 from model.tools.product_validation import ProductValidation
