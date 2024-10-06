@@ -47,7 +47,7 @@ class Product(Base):
 
     @brand.setter
     def family(self, brand):
-        self._brand = Validation.brand_validator(brand, "Invalid Family")
+        self._brand = Validation.brand_validator(brand, "Invalid Brand")
 
     @property
     def model(self):
