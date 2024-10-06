@@ -8,8 +8,7 @@ from view.component import LabelWithEntry, Table
 
 
 class LessonView:
-    def table_select(self):
-        pass
+
 
     def reset_form(self):
         self.id.set(0)
@@ -20,6 +19,8 @@ class LessonView:
         self.end_time.set("")
         #self.clear_table()
         #self.show_on_table()
+
+    @staticmethod
 
     def table_click(self, selected_item):
                 print(selected_item)
@@ -79,7 +80,8 @@ class LessonView:
         tkinter.Label(self.window, text="end_time").place(x=20, y=210)
         tkinter.Entry(self.window).place(x=80, y=210)
 
-       # self.table = Table(window, ["Id", "Name", "Family", "Age"], [60, 100, 100, 60], x=250, y=20,self.table_click)
+        self.table = Table(window, ["Id", "Name", "Family", "Age"], [60, 100, 100, 60], x=250, y=20)
+        self.table.refresh_table(LessonController.find_all()[1])
 
         save_btn = tkinter.Button(self.window,
                              text="save",
@@ -104,8 +106,6 @@ class LessonView:
                              font=("B titr", 10) ,
                              width=10, command=self.remove_click)
         remove_btn.place(x=300, y=400)
-
-
 
 
 
