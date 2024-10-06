@@ -3,6 +3,7 @@ import tkinter as ttk
 import tkinter.messagebox as msg
 
 from controller.user_controller import UserController
+from view.component import LabelWithEntry
 
 
 class UserView:
@@ -67,26 +68,43 @@ class UserView:
 
         self.win = Tk()
         self.win.geometry("400x400")
-        Label(self.win, text="Id").place(x=20, y=20)
-        Label(self.win, text="Name").place(x=80, y=20)
-        Label(self.win, text="Family").place(x=140, y=20)
-        Label(self.win, text="Birth_Date").place(x=200, y=20)
-        Label(self.win, text="username").place(x=260, y=20)
-        Label(self.win, text="password").place(x=320, y=20)
 
-        self.id = IntVar()
-        self.name = StringVar()
-        self.family = StringVar()
-        self.birth_date = StringVar()
-        self.username = StringVar()
-        self.password = StringVar()
+        # id
+        # Label(self.win, text="Id").place(x=20, y=20)
+        # self.id = IntVar()
+        # Entry(self.win, textvariable=self.id, state="readonly", width=20).place(x=80, y=20)
+        self.id = LabelWithEntry(win, "Id", 20, 20, data_type="int", state="readonly")
 
-        Entry(self.win, textvariable=self.id, state="readonly", width=20).place(x=20, y=40)
-        Entry(self.win, textvariable=self.name, width=20).place(x=20, y=80)
-        Entry(self.win, textvariable=self.family, width=20).place(x=20, y=120)
-        Entry(self.win, textvariable=self.birth_date, width=20).place(x=20, y=160)
-        Entry(self.win, textvariable=self.username, width=20).place(x=20, y=200)
-        Entry(self.win, textvariable=self.password, width=20).place(x=20, y=240)
+        # Name
+        # Label(self.win, text="Name").place(x=20, y=60)
+        # self.name = StringVar()
+        # Entry(self.win, textvariable=self.name, width=20).place(x=80, y=60)
+        self.name = LabelWithEntry(win, "Name", 20, 60)
+
+        # Family
+        # Label(self.win, text="Family").place(x=20, y=100)
+        # self.family = StringVar()
+        # Entry(self.win, textvariable=self.family, width=20).place(x=80, y=100)
+        self.family = LabelWithEntry(win, "Family", 20, 100)
+
+        # Birth_Date
+        # Label(self.win, text="Birth_Date").place(x=20, y=140)
+        # self.birth_date = StringVar()
+        # Entry(self.win, textvariable=self.birth_date, width=20).place(x=200, y=140)\
+        self.birth_day = LabelWithEntry(win, "Birth Date", 20, 140, data_type="int")
+
+        # Username
+        # Label(self.win, text="Username").place(x=260, y=20)
+        # self.username = StringVar()
+        # Entry(self.win, textvariable=self.username, width=20).place(x=20, y=180)
+        self.username = LabelWithEntry(win, "Username", 20, 180)
+
+        # Password
+        # Label(self.win, text="Password").place(x=320, y=20)
+        # self.password = StringVar()
+        # Entry(self.win, textvariable=self.password, width=20).place(x=20, y=220)
+        self.password = LabelWithEntry(win, "Password", 20, 220)
+
 
         self.table = ttk.Treeview(self.win, columns=(1, 2, 3, 4), show="headings")
         self.table.place(x=250, y=20)
