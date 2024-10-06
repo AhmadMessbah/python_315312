@@ -68,7 +68,7 @@ class Product(Base):
 
     @buy_price.setter
     def buy_price(self, buy_price):
-        self._buy_price = Validation.buy_sell_validator(buy_price, "Invalid Buy Price")
+        self._buy_price = buy_price
 
     @property
     def sell_price(self):
@@ -76,4 +76,4 @@ class Product(Base):
 
     @sell_price.setter
     def sell_price(self, sell_price):
-        self._sell_price = Validation.buy_sell_validator(sell_price, "Invalid Sell Price")
+        self._sell_price = sell_price
