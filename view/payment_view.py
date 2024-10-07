@@ -1,6 +1,6 @@
 from datetime import datetime
 from tkinter import *
-import tkinter.ttk as ttk
+#import tkinter.ttk as ttk
 import tkinter.messagebox as msg
 
 from controller.payment_controller import PaymentController
@@ -57,10 +57,6 @@ class PaymentView:
 
         self.table = Table(win, ["Id", "Account", "Amount", "Date", "Person"],[60, 100, 100, 60, 60], 250, 20, self.table_click)
         self.table.refresh_table(PaymentController.find_all()[1])
-
-        self.table = ttk.Treeview(win, columns=(1, 2, 3, 4, 5), show="headings")
-        self.table.place(x=250, y=20)
-
 
         Button(win, text="Save", command=self.save_record).place(x=100, y=220)
         Button(win, text="Remove", command=self.remove_record).place(x=100, y=250)
