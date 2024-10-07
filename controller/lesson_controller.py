@@ -5,19 +5,19 @@ from model.service.lesson_service import LessonService
 class LessonController:
 
     @classmethod
-    def save(cls, title, week_day, start_date, start_time, end_time):
+    def save(cls, title, week_day, start_date, end_date):
         try:
 
-            lesson = Lesson(title, week_day, start_date, start_time, end_time)
+            lesson = Lesson(title, week_day, start_date, end_date)
             LessonService.save(lesson)
             return True, "lesson saved"
         except Exception as e:
             return False, str(e)
 
     @classmethod
-    def edit(cls, id, title, week_day, start_date, start_time, end_time):
+    def edit(cls, id, title, week_day, start_date, end_date):
         try:
-            lesson = Lesson(id, title, week_day, start_date, start_time, end_time)
+            lesson = Lesson(id, title, week_day, start_date, end_date)
             LessonService.edit(lesson)
             return True, "lesson edited"
         except Exception as e:
