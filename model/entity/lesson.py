@@ -51,9 +51,9 @@ class Lesson(Base):
         self._start_date = start_date
 
     @property
-    def start_time(self):
-        return self._start_time
+    def end_date(self):
+        return self._end_date
 
-    @start_time.setter
-    def start_time(self, start_time):
-        self._start_time = start_time
+    @end_date.setter
+    def end_date(self, end_date):
+        self._end_date = end_date
