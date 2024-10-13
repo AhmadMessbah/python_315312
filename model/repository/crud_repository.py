@@ -4,12 +4,7 @@ from sqlalchemy_utils import create_database, database_exists
 from model.entity.base import Base
 
 
-connection_string = "mysql+pymysql://root:root123@localhost:3306/mft"
-if not database_exists(connection_string):
-    create_database(connection_string)
-
-engine = create_engine(connection_string,echo=True)
-Base.metadata.create_all(engine)
+engine = create_engine("mysql+pymysql://root:root123@localhost:3306/mft")
 
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -27,7 +22,6 @@ class CrudRepository:
     
     def save(self, entity):
         session.add(entity)
-        print("AF ", entity)
         session.commit()
         session.refresh(entity)
         return entity
