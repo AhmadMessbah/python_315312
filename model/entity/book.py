@@ -26,6 +26,11 @@ class Book(Base):
         self.author = author
         self.pages = pages
 
+    def get_id(self):
+        return self._id
+
+    def set_id(self, id):
+        self._id = id
 
     def get_title(self):
         return self._title
@@ -45,6 +50,7 @@ class Book(Base):
     def set_pages(self, pages):
         self._pages = positive_int(pages)
 
+    id = property(get_id, set_id)
     title = property(get_title, set_title)
     author = property(get_author, set_author)
     pages = property(get_pages, set_pages)

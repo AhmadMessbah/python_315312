@@ -1,47 +1,38 @@
-import re
-
 from model.entity.user import User
-from model.service.user_service import User
+from model.service.user_service import UserService
+from model.tools.decorators import exception_handling
 
 
 class UserController:
 
     @classmethod
-    def save(cls, name, family, birth_date, username, password):
-        try:
-            us = User(None, name, family, birth_date,username,password)
-            UserService.save(us)
-            return True, "User Saved"
-        except Exception as e:
-            return False, str(e)
+    @exception_handling
+    def save(cls, username, password, employee):
+        user = User(None,  username, password)
+        user.employee = employee
+        UserService.save(user)
+        return "User Saved"
 
     @classmethod
-    def edit(cls, id, name, family, birth_date, username, password):
-        try:
-            us = User(id, name, family, birth_date, username, password)
-            UserService.edit(us)
-            return True, "User Edited"
-        except Exception as e:
-            return False, str(e)
+    @exception_handling
+    def edit(cls, id,  username, password, employee):
+        user = User(id, username, password)
+        user.employee = employee
+        UserService.edit(user)
+        return "User Edited"
 
     @classmethod
+    @exception_handling
     def remove(cls, id):
-        try:
-            UserService.remove(id)
-            return True, "User Removed"
-        except Exception as e:
-            return False, str(e)
+        UserService.remove(id)
+        return "User Removed"
 
     @classmethod
+    @exception_handling
     def find_all(cls):
-        try:
-            return True, UserService.find_all()
-        except Exception as e:
-            return False, str(e)
+        return UserService.find_all()
 
     @classmethod
+    @exception_handling
     def find_by_id(cls, id):
-        try:
-            return True, UserService.find_by_id(id)
-        except Exception as e:
-            return False, str(e)
+        return UserService.find_by_id(id)
