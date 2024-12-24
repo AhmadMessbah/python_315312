@@ -5,7 +5,7 @@ class PaymentService:
     repo = CrudRepository(Payment)
 
     @classmethod
-    def save(cls,payment):
+    def save(cls, payment):
         cls.repo.save(payment)
         return payment
 
@@ -13,7 +13,6 @@ class PaymentService:
     def edit(cls, payment):
         cls.repo.edit(payment)
         return payment
-
 
     @classmethod
     def remove(cls, id):
@@ -29,5 +28,5 @@ class PaymentService:
         return cls.repo.find_by_id(id)
 
     @classmethod
-    def find_by(cls, by):
-        return cls.repo.find_by(by)
+    def find_by(cls, **kwargs):
+        return cls.repo.find_by(**kwargs)

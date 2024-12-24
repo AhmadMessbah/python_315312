@@ -24,6 +24,7 @@ class PaymentView:
         if status:
             msg.showinfo("Saved.", message)
             self.reset_form()
+            self.table.refresh_table(PaymentController.find_all()[1])  # Refresh table after saving
         else:
             msg.showerror("Save Error!", message)
 
@@ -33,6 +34,7 @@ class PaymentView:
             if status:
                 msg.showinfo("Removed.", message)
                 self.reset_form()
+                self.table.refresh_table(PaymentController.find_all()[1])  # Refresh table after removing
             else:
                 msg.showerror("Remove Error!", message)
 
@@ -41,9 +43,9 @@ class PaymentView:
         if status:
             msg.showinfo("Edited.", message)
             self.reset_form()
+            self.table.refresh_table(PaymentController.find_all()[1])  # Refresh table after editing
         else:
             msg.showerror("Edit Error!", message)
-
 
     def __init__(self):
         win = Tk()
